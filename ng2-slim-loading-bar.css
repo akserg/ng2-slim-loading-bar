@@ -4,8 +4,20 @@
  * https://github.com/akserg/ng2-slim-loading-bar
  */
 
-/* Styling for the ngProgress itself */
-#ngProgress {
+
+/* Styling for the Slim Loading Progress Bar container */
+.slim-loading-bar {
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+}
+
+/* Styling for the Slim Loading Progress Bar itself */
+.slim-loading-bar-progress {
     margin: 0;
     padding: 0;
     z-index: 99998;
@@ -20,15 +32,4 @@
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
-}
-
-/* Styling for the ngProgress-container */
-#ngProgress-container {
-    position: fixed;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 99999;
 }

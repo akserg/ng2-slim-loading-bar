@@ -4,7 +4,7 @@
 
 'use strict';
 
-import {SlimLoadingBarComponent} from './src/component';
+import {SlimLoadingBar} from './src/component';
 import {SlimLoadingBarService} from './src/service';
 
 export * from './src/component';
@@ -12,5 +12,5 @@ export * from './src/service';
 
 export default {
   providers: [SlimLoadingBarService],
-  directives: [SlimLoadingBarComponent]
+  directives: [SlimLoadingBar]
 }

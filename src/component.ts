@@ -19,7 +19,7 @@ import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType} fro
         [style.height]="height" [style.opacity]="show ? '1' : '0'"></div>
 </div>`
 })
-export class SlimLoadingBarComponent implements OnInit {
+export class SlimLoadingBar implements OnInit {
     
     private progressEl:HTMLDivElement;
     

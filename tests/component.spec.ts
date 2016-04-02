@@ -18,13 +18,13 @@ from 'angular2/platform/testing/browser';
 import {Observable} from 'rxjs/Observable';
 
 import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType} from '../src/service';
-import {SlimLoadingBarComponent} from '../src/component';
+import {SlimLoadingBar} from '../src/component';
 
 export function main() {
-    describe('SlimLoadingBarComponent', () => {
+    describe('SlimLoadingBar', () => {
 
         let componentFixture:ComponentFixture;
-        let component:SlimLoadingBarComponent;
+        let component:SlimLoadingBar;
         let containerDiv:HTMLDivElement;
         let progressDiv:HTMLDivElement;
 
@@ -33,7 +33,7 @@ export function main() {
         });
 
         beforeEach(injectAsync([TestComponentBuilder], (tcb:TestComponentBuilder) => {
-            return tcb.createAsync(SlimLoadingBarComponent).then((cf:ComponentFixture) => {
+            return tcb.createAsync(SlimLoadingBar).then((cf:ComponentFixture) => {
                 componentFixture = cf;
                 let element = componentFixture.nativeElement;
                 containerDiv = element.querySelector('.slim-loading-bar');
