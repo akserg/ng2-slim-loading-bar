@@ -1,0 +1,58 @@
+{
+  "name": "ng2-slim-loading-bar",
+  "description": "Angular2 component shows slim loading bar at the top of the page",
+  "scripts": {
+    "test": "tsc && karma start",
+    "test-watch": "tsc && karma start --no-single-run --auto-watch",
+    "minify": "node node_modules/uglify-js/bin/uglifyjs bundles/ng2-slim-loading-bar.js -o bundles/ng2-slim-loading-bar.min.js --source-map bundles/ng2-slim-loading-bar.min.js.map -c -m",
+    "prepublish": "typings install && tsc && node make.js && npm run minify",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akserg/ng2-slim-loading-bar.git"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "slim", 
+    "loading", 
+    "bar",
+    "progress"
+  ],
+  "author": "Sergey Akopkokhyants",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akserg/ng2-slim-loading-bar/issues"
+  },
+  "main": "ng2-slim-loading-bar.js",
+  "typings": "./ng2-slim-loading-bar.d.ts",
+  "homepage": "https://github.com/akserg/ng2-slim-loading-bar",
+  "devDependencies": {
+    "angular2": "~2.0.0-beta.13",
+    "es6-promise": "~3.1.2",
+    "es6-shim": "~0.35.0",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.2",
+    "zone.js": "~0.6.6",
+    "cz-conventional-changelog": "^1.1.5",
+    "jasmine-core": "~2.3.4",
+    "karma": "~0.13.15",
+    "karma-chrome-launcher": "~0.2.2",
+    "karma-firefox-launcher": "~0.1.7",
+    "karma-jasmine": "~0.3.6",
+    "karma-typescript-preprocessor": "0.0.21",
+    "semantic-release": "^4.3.5",
+    "systemjs": "~0.19.6",
+    "systemjs-builder": "^0.15.6",
+    "tsd": "^0.6.5",
+    "typescript": "~1.7.3",
+    "typings": "^0.6.8",
+    "uglify-js": "^2.6.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

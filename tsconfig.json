@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "target": "ES5",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "declaration": true,
+        "moduleResolution": "node",
+        "sourceMap": true
+    },
+    "files": [
+        "typings/main.d.ts",
+        "ng2-slim-loading-bar.ts",
+        "./src/component.ts",
+        "./src/service.ts",
+        "./tests/component.spec.ts",
+        "./tests/service.spec.ts"
+    ]
+}
