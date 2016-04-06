@@ -1,4 +1,4 @@
-System.registerDynamic("src/component", ["angular2/core", "angular2/common", "./service"], true, function($__require, exports, module) {
+System.registerDynamic("src/component", ["angular2/core", "angular2/src/facade/lang", "angular2/common", "./service"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -20,6 +20,7 @@ System.registerDynamic("src/component", ["angular2/core", "angular2/common", "./
       return Reflect.metadata(k, v);
   };
   var core_1 = $__require('angular2/core');
+  var lang_1 = $__require('angular2/src/facade/lang');
   var common_1 = $__require('angular2/common');
   var service_1 = $__require('./service');
   var SlimLoadingBar = (function() {
@@ -35,7 +36,7 @@ System.registerDynamic("src/component", ["angular2/core", "angular2/common", "./
         return this._progress;
       },
       set: function(value) {
-        if (value) {
+        if (lang_1.isPresent(value)) {
           this._progress = value + '%';
         }
       },
@@ -63,7 +64,7 @@ System.registerDynamic("src/component", ["angular2/core", "angular2/common", "./
     SlimLoadingBar = __decorate([core_1.Component({
       selector: 'ng2-slim-loading-bar',
       directives: [common_1.CORE_DIRECTIVES],
-      template: "\n<div class=\"slim-loading-bar\">\n    <div class=\"slim-loading-bar-progress\" [style.width]=\"progress\" [style.backgroundColor]=\"color\" [style.color]=\"color\" \n        [style.height]=\"height\" [style.opacity]=\"show ? '1' : '0'\"></div>\n</div>"
+      template: "\n<div class=\"slim-loading-bar\">\n    <div class=\"slim-loading-bar-progress\" [style.width]=\"progress\" [style.backgroundColor]=\"color\" [style.color]=\"color\"\n        [style.height]=\"height\" [style.opacity]=\"show ? '1' : '0'\"></div>\n</div>"
     }), __metadata('design:paramtypes', [service_1.SlimLoadingBarService])], SlimLoadingBar);
     return SlimLoadingBar;
   })();
@@ -117,9 +118,8 @@ System.registerDynamic("src/service", ["angular2/core", "angular2/src/facade/lan
       this._height = '2px';
       this._color = 'firebrick';
       this._visible = true;
-      this.intervalCounterId = 0;
+      this._intervalCounterId = 0;
       this.interval = 500;
-      this.isPaused = false;
       this.observable = new Observable_1.Observable(function(subscriber) {
         _this.subscriber = subscriber;
       });
@@ -189,26 +189,19 @@ System.registerDynamic("src/service", ["angular2/core", "angular2/src/facade/lan
       if (onCompleted === void 0) {
         onCompleted = null;
       }
-      if (this.intervalCounterId) {
-        this.stop();
-      }
-      this._onCompleted = onCompleted;
-      this.intervalCounterId = setInterval(function() {
-        if (!_this.isPaused) {
-          _this.progress++;
-          if (_this.progress === 100) {
-            _this.complete();
-          }
+      this.stop();
+      this.visible = true;
+      this._intervalCounterId = setInterval(function() {
+        _this.progress++;
+        if (_this.progress === 100) {
+          _this.complete();
         }
       }, this.interval);
     };
-    SlimLoadingBarService.prototype.pause = function() {
-      this.isPaused = !this.isPaused;
-    };
     SlimLoadingBarService.prototype.stop = function() {
-      if (this.intervalCounterId) {
-        clearInterval(this.intervalCounterId);
-        this.intervalCounterId = null;
+      if (this._intervalCounterId) {
+        clearInterval(this._intervalCounterId);
+        this._intervalCounterId = null;
       }
     };
     SlimLoadingBarService.prototype.reset = function() {
@@ -216,11 +209,15 @@ System.registerDynamic("src/service", ["angular2/core", "angular2/src/facade/lan
       this.progress = 0;
     };
     SlimLoadingBarService.prototype.complete = function() {
+      var _this = this;
       this.progress = 100;
-      if (this._onCompleted) {
-        this._onCompleted.call(this);
-      }
       this.stop();
+      setTimeout(function() {
+        _this.visible = false;
+        setTimeout(function() {
+          _this.progress = 0;
+        }, 250);
+      }, 250);
     };
     SlimLoadingBarService = __decorate([core_1.Injectable(), __metadata('design:paramtypes', [])], SlimLoadingBarService);
     return SlimLoadingBarService;
