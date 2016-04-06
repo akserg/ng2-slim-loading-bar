@@ -130,6 +130,9 @@ System.registerDynamic("src/service", ["angular2/core", "angular2/src/facade/lan
       },
       set: function(value) {
         if (lang_1.isPresent(value)) {
+          if (value > 0) {
+            this.visible = true;
+          }
           this._progress = value;
           this.emitEvent(new SlimLoadingBarEvent(SlimLoadingBarEventType.PROGRESS, this._progress));
         }

@@ -45,6 +45,9 @@ export class SlimLoadingBarService {
 
     set progress(value:number) {
         if (isPresent(value)) {
+        	if (value > 0) {
+        		this.visible = true;
+        	}
             this._progress = value;
             this.emitEvent(new SlimLoadingBarEvent(SlimLoadingBarEventType.PROGRESS, this._progress));
         }
