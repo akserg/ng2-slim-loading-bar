@@ -38,7 +38,7 @@ export class SlimLoadingBarService {
     private subscriber: Subscriber<SlimLoadingBarEvent>;
 
     constructor() {
-        this.observable = new Observable((subscriber:Subscriber<SlimLoadingBarEvent>) => {
+        this.observable = new Observable<SlimLoadingBarEvent>((subscriber:Subscriber<SlimLoadingBarEvent>) => {
             this.subscriber = subscriber;
         });
     }
@@ -96,7 +96,6 @@ export class SlimLoadingBarService {
         try {
             this.subscriber.next(event);
         } catch (e) {
-        	console.log(e);
             console.log('!!! Suggestion: Seems you forget add <ng2-slim-loading-bar></ng2-slim-loading-bar> into your html?');
         }
     }
