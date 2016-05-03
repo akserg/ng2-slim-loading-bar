@@ -4,7 +4,7 @@ import {
   beforeEach,
   it,
   inject,
-  injectAsync,
+//   injectAsync,
   beforeEachProviders,
   TestComponentBuilder,
   ComponentFixture,
@@ -32,10 +32,11 @@ export function main() {
             return [TEST_BROWSER_PLATFORM_PROVIDERS, TEST_BROWSER_APPLICATION_PROVIDERS, TestComponentBuilder, SlimLoadingBarService];
         });
 
-        beforeEach(injectAsync([TestComponentBuilder], (tcb:TestComponentBuilder) => {
+        // beforeEach(injectAsync([TestComponentBuilder], (tcb:TestComponentBuilder) => {
+        beforeEach(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
             return tcb.createAsync(SlimLoadingBar).then((cf:ComponentFixture) => {
                 componentFixture = cf;
-                let element = componentFixture.nativeElement;
+                let element = componentFixture.elementRef.nativeElement;
                 containerDiv = element.querySelector('.slim-loading-bar');
                 progressDiv = element.querySelector('.slim-loading-bar-progress');
                 component = componentFixture.componentInstance;
