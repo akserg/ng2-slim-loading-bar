@@ -11,12 +11,23 @@ System.config({
     baseURL: '/base/',
     defaultJSExtensions: true,
     map: {
-        'angular2': 'node_modules/angular2',
+        '@angular/core/testing': 'node_modules/@angular/core/testing.js',
+        '@angular/core': 'node_modules/@angular/core/index.js',
+        '@angular/compiler/testing': 'node_modules/@angular/compiler/testing.js',
+        '@angular/compiler': 'node_modules/@angular/compiler/index.js',
+        '@angular/common/testing': 'node_modules/@angular/common/testing.js',
+        '@angular/common': 'node_modules/@angular/common/index.js',
+        '@angular/common/src/facade/lang': 'node_modules/@angular/common/src/facade/lang.js',
+        '@angular/platform-browser-dynamic/testing': 'node_modules/@angular/platform-browser-dynamic/testing.js',
+        '@angular/platform-browser/testing': 'node_modules/@angular/platform-browser/testing.js',
+        '@angular/platform-browser': 'node_modules/@angular/platform-browser/index.js',
+        '@angular': 'node_modules/@angular',
+        'browser_adapter': 'node_modules/@angular/platform-browser/src/browser/browser_adapter',
         'rxjs': 'node_modules/rxjs'
     }
 });
 
-System.import('angular2/src/platform/browser/browser_adapter').then(function(browser_adapter) {
+System.import('browser_adapter').then(function(browser_adapter) {
     browser_adapter.BrowserDomAdapter.makeCurrent();
 }).then(function() {
         return Promise.all(

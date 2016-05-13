@@ -2,9 +2,9 @@
 // This project is licensed under the terms of the MIT license.
 // https://github.com/akserg/ng2-slim-loading-bar
 
-import {Component, Input, OnInit} from 'angular2/core';
-import {isPresent} from 'angular2/src/facade/lang';
-import {CORE_DIRECTIVES} from 'angular2/common';
+import {Component, Input, OnInit} from '@angular/core';
+import {isPresent} from '@angular/common/src/facade/lang';
+import {CORE_DIRECTIVES} from '@angular/common';
 
 import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType} from './service';
 
