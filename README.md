@@ -30,9 +30,9 @@ Finally, you can use *ng2-slim-loading-bar* in your Angular 2 project:
 - Add `<ng2-slim-loading-bar></ng2-slim-loading-bar>` tag in template of your application component.
 
 ```js
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {SlimLoadingBarService, SlimLoadingBar} from 'ng2-slim-loading-bar/ng2-slim-loading-bar';
-import {bootstrap} from 'angular2/platform/browser';
+import {bootstrap} from '@angular/platform/browser';
 
 bootstrap(AppComponent, [
     SlimLoadingBarService // It is required to have 1 unique instance of your service
