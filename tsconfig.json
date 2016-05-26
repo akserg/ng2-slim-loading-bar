@@ -9,12 +9,9 @@
         "moduleResolution": "node",
         "sourceMap": true
     },
-    "files": [
+    "exclude": [
+        "node_modules",
         "typings/main.d.ts",
-        "ng2-slim-loading-bar.ts",
-        "./src/component.ts",
-        "./src/service.ts",
-        "./tests/component.spec.ts",
-        "./tests/service.spec.ts"
+        "typings/main"
     ]
 }

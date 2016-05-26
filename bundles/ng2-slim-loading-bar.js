@@ -1,4 +1,5 @@
-System.registerDynamic("src/component", ["angular2/core", "angular2/src/facade/lang", "angular2/common", "./service"], true, function($__require, exports, module) {
+System.registerDynamic("src/component", ["@angular/core", "@angular/common/src/facade/lang", "@angular/common", "./service"], true, function($__require, exports, module) {
+  "use strict";
   ;
   var define,
       global = this,
@@ -19,9 +20,9 @@ System.registerDynamic("src/component", ["angular2/core", "angular2/src/facade/l
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
       return Reflect.metadata(k, v);
   };
-  var core_1 = $__require('angular2/core');
-  var lang_1 = $__require('angular2/src/facade/lang');
-  var common_1 = $__require('angular2/common');
+  var core_1 = $__require('@angular/core');
+  var lang_1 = $__require('@angular/common/src/facade/lang');
+  var common_1 = $__require('@angular/common');
   var service_1 = $__require('./service');
   var SlimLoadingBar = (function() {
     function SlimLoadingBar(service) {
@@ -67,12 +68,13 @@ System.registerDynamic("src/component", ["angular2/core", "angular2/src/facade/l
       template: "\n<div class=\"slim-loading-bar\">\n    <div class=\"slim-loading-bar-progress\" [style.width]=\"progress\" [style.backgroundColor]=\"color\" [style.color]=\"color\"\n        [style.height]=\"height\" [style.opacity]=\"show ? '1' : '0'\"></div>\n</div>"
     }), __metadata('design:paramtypes', [service_1.SlimLoadingBarService])], SlimLoadingBar);
     return SlimLoadingBar;
-  })();
+  }());
   exports.SlimLoadingBar = SlimLoadingBar;
   return module.exports;
 });
 
-System.registerDynamic("src/service", ["angular2/core", "angular2/src/facade/lang", "rxjs/Observable"], true, function($__require, exports, module) {
+System.registerDynamic("src/service", ["@angular/core", "@angular/common/src/facade/lang", "rxjs/Observable"], true, function($__require, exports, module) {
+  "use strict";
   ;
   var define,
       global = this,
@@ -93,8 +95,8 @@ System.registerDynamic("src/service", ["angular2/core", "angular2/src/facade/lan
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
       return Reflect.metadata(k, v);
   };
-  var core_1 = $__require('angular2/core');
-  var lang_1 = $__require('angular2/src/facade/lang');
+  var core_1 = $__require('@angular/core');
+  var lang_1 = $__require('@angular/common/src/facade/lang');
   var Observable_1 = $__require('rxjs/Observable');
   (function(SlimLoadingBarEventType) {
     SlimLoadingBarEventType[SlimLoadingBarEventType["PROGRESS"] = 0] = "PROGRESS";
@@ -109,7 +111,7 @@ System.registerDynamic("src/service", ["angular2/core", "angular2/src/facade/lan
       this.value = value;
     }
     return SlimLoadingBarEvent;
-  })();
+  }());
   exports.SlimLoadingBarEvent = SlimLoadingBarEvent;
   var SlimLoadingBarService = (function() {
     function SlimLoadingBarService() {
@@ -223,7 +225,7 @@ System.registerDynamic("src/service", ["angular2/core", "angular2/src/facade/lan
     };
     SlimLoadingBarService = __decorate([core_1.Injectable(), __metadata('design:paramtypes', [])], SlimLoadingBarService);
     return SlimLoadingBarService;
-  })();
+  }());
   exports.SlimLoadingBarService = SlimLoadingBarService;
   return module.exports;
 });
