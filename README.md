@@ -1,6 +1,8 @@
-# ng2-slim-loading-bar [![Build Status](https://travis-ci.org/akserg/ng2-slim-loading-bar.svg?branch=master)](https://travis-ci.org/akserg/ng2-slim-loading-bar) [![npm version](https://img.shields.io/npm/v/ng2-slim-loading-bar.svg)](https://www.npmjs.com/package/ng2-slim-loading-bar) [![npm monthly downloads](https://img.shields.io/npm/dm/ng2-slim-loading-bar.svg?style=flat-square)](https://www.npmjs.com/package/ng2-slim-loading-bar)[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-
+# ng2-slim-loading-bar [![Build Status](https://travis-ci.org/akserg/ng2-slim-loading-bar.svg?branch=master)](https://travis-ci.org/akserg/ng2-slim-loading-bar) [![npm version](https://img.shields.io/npm/v/ng2-slim-loading-bar.svg)](https://www.npmjs.com/package/ng2-slim-loading-bar) [![npm monthly downloads](https://img.shields.io/npm/dm/ng2-slim-loading-bar.svg?style=flat-square)](https://www.npmjs.com/package/ng2-slim-loading-bar)[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![Dependency Status](https://david-dm.org/akserg/ng2-slim-loading-bar.svg)](https://david-dm.org/akserg/ng2-slim-loading-bar)[![devDependency Status](https://david-dm.org/akserg/ng2-slim-loading-bar/dev-status.svg)](https://david-dm.org/akserg/ng2-slim-loading-bar#info=devDependencies)
+===============
 Angular2 component shows slim loading bar at the top of the page of your application.
+
+Follow me [![twitter](https://img.shields.io/twitter/follow/akopkokhyants.svg?style=social&label=%20akopkokhyants)](https://twitter.com/akopkokhyants) to be notified about new releases.
 
 Simple examples using ng2-slim-loading-bar:
 - with SystemJS in [ng2-systemjs-demo](https://github.com/akserg/ng2-systemjs-demo)
