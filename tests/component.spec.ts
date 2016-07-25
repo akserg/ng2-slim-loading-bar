@@ -7,7 +7,8 @@ import {
     //injectAsync,
     beforeEachProviders,
     fakeAsync,
-    tick
+    tick,
+    async
 } from '@angular/core/testing';
 
 import {
@@ -36,7 +37,7 @@ export function main() {
         });
 
         // beforeEach(injectAsync([TestComponentBuilder], (tcb:TestComponentBuilder) => {
-        beforeEach(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
+        beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
             return tcb.createAsync(SlimLoadingBar).then((cf:ComponentFixture<any>) => {
                 componentFixture = cf;
                 let element = componentFixture.elementRef.nativeElement;
@@ -45,7 +46,7 @@ export function main() {
                 component = componentFixture.componentInstance;
                 componentFixture.detectChanges();
             });
-        }));
+        })));
 
         it('should be defined', () => {
             expect(containerDiv).toBeDefined();
