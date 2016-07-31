@@ -29,11 +29,6 @@
   "typings": "./ng2-slim-loading-bar.d.ts",
   "homepage": "https://github.com/akserg/ng2-slim-loading-bar",
   "dependencies": {
-    "@angular/common": "^2.0.0-rc.4",
-    "@angular/compiler": "^2.0.0-rc.4",
-    "@angular/core": "^2.0.0-rc.4",
-    "@angular/platform-browser": "^2.0.0-rc.4",
-    "@angular/platform-browser-dynamic": "^2.0.0-rc.4",
     "es6-promise": "~3.1.2",
     "es6-shim": "~0.35.0",
     "reflect-metadata": "0.1.2",
@@ -41,6 +36,11 @@
     "zone.js": "~0.6.12"
   },
   "devDependencies": {
+    "@angular/common": "^2.0.0-rc.4",
+    "@angular/compiler": "^2.0.0-rc.4",
+    "@angular/core": "^2.0.0-rc.4",
+    "@angular/platform-browser": "^2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "^2.0.0-rc.4",
     "jasmine-core": "~2.3.4",
     "karma": "~0.13.15",
     "karma-chrome-launcher": "~0.2.2",
