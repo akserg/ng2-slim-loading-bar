@@ -3,11 +3,12 @@
 // https://github.com/akserg/ng2-slim-loading-bar
 
 import {Injectable} from '@angular/core';
-import {isPresent} from '@angular/common/src/facade/lang';
 
 import {Observable} from 'rxjs/Observable';
 import {Subscriber} from 'rxjs/Subscriber';
 import {Subscription} from 'rxjs/Subscription';
+
+import {isPresent} from './slim-loading-bar.utils';
 
 export enum SlimLoadingBarEventType {
     PROGRESS,
@@ -92,11 +93,9 @@ export class SlimLoadingBarService {
     }
 
     private emitEvent(event: SlimLoadingBarEvent) {
-        // Push up a new event
-        try {
+        if (this.subscriber) {
+            // Push up a new event
             this.subscriber.next(event);
-        } catch (e) {
-            console.log('!!! Suggestion: Seems you forget add <ng2-slim-loading-bar></ng2-slim-loading-bar> into your html?');
         }
     }
 

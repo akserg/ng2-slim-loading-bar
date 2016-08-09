@@ -26,30 +26,30 @@ Online demo available [here](http://akserg.github.io/ng2-webpack-demo)
 If you use SystemJS to load your files, you might have to update your config with this if you don't use `defaultJSExtensions: true`:
 ```js
 System.config({
+    map: {
+        'ng2-slim-loading-bar': 'node_modules/ng2-slim-loading-bar'
+    },
     packages: {
-        "/ng2-slim-loading-bar": {"defaultExtension": "js"}
+        'ng2-slim-loading-bar':  { main: 'index.js',  defaultExtension: 'js' },
     }
 });
 ```
 
 Finally, you can use *ng2-slim-loading-bar* in your Angular 2 project:
-- Import `SlimLoadingBarService, SlimLoadingBar` from `ng2-slim-loading-bar/ng2-slim-loading-bar`
+- Import `SlimLoadingBarService, SlimLoadingBarComponent` from `ng2-slim-loading-bar`
 - Instantiate `SlimLoadingBarService` in the bootstrap of your application;
-- Add `SlimLoadingBar` to the "directives" property of your application component;
+- Add `SlimLoadingBarComponent` to the "directives" property of your application component;
 - Add `<ng2-slim-loading-bar></ng2-slim-loading-bar>` tag in template of your application component.
 
 ```js
 import {Component} from '@angular/core';
-import {SlimLoadingBarService, SlimLoadingBar} from 'ng2-slim-loading-bar/ng2-slim-loading-bar';
+import {SlimLoadingBarService, SlimLoadingBarComponent} from 'ng2-slim-loading-bar';
 import {bootstrap} from '@angular/platform/browser';
-
-bootstrap(AppComponent, [
-    SlimLoadingBarService // It is required to have 1 unique instance of your service
-]);
 
 @Component({
     selector: 'app',
-    directives: [SlimLoadingBar],
+    directives: [SlimLoadingBarComponent],
+    providers: [SlimLoadingBarService]
     template: `
         <div>Hello world</div>
         <button (click)="startLoading()">Start Loading</button>
@@ -67,6 +67,8 @@ export class AppComponent {
         });
     }
 }
+
+bootstrap(AppComponent);
 ```
 
 # License

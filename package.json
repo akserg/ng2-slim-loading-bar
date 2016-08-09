@@ -1,6 +1,7 @@
 {
   "name": "ng2-slim-loading-bar",
   "description": "Angular2 component shows slim loading bar at the top of the page",
+  "version": "0.0.0-semantically-released",
   "scripts": {
     "test": "tsc && karma start",
     "test-watch": "tsc && karma start --no-single-run --auto-watch",
@@ -25,8 +26,8 @@
   "bugs": {
     "url": "https://github.com/akserg/ng2-slim-loading-bar/issues"
   },
-  "main": "ng2-slim-loading-bar.js",
-  "typings": "./ng2-slim-loading-bar.d.ts",
+  "main": "index.js",
+  "typings": "index",
   "homepage": "https://github.com/akserg/ng2-slim-loading-bar",
   "dependencies": {
     "es6-promise": "~3.1.2",
@@ -41,6 +42,8 @@
     "@angular/core": "^2.0.0-rc.4",
     "@angular/platform-browser": "^2.0.0-rc.4",
     "@angular/platform-browser-dynamic": "^2.0.0-rc.4",
+    "commitizen": "^2.7.6",
+    "cz-conventional-changelog": "^1.1.5",
     "jasmine-core": "~2.3.4",
     "karma": "~0.13.15",
     "karma-chrome-launcher": "~0.2.2",
@@ -53,9 +56,7 @@
     "tsd": "^0.6.5",
     "typescript": "^1.8.7",
     "typings": "^0.8.1",
-    "uglify-js": "^2.6.2",
-    "commitizen": "^2.7.6",
-    "cz-conventional-changelog": "^1.1.5"
+    "uglify-js": "^2.6.2"
   },
   "config": {
     "commitizen": {

@@ -21,14 +21,14 @@ from '@angular/platform-browser-dynamic/testing';
 
 import {Observable} from 'rxjs/Observable';
 
-import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType} from '../src/service';
-import {SlimLoadingBar} from '../src/component';
+import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType} from '../src/slim-loading-bar.service';
+import {SlimLoadingBarComponent} from '../src/slim-loading-bar.component';
 
 export function main() {
     describe('SlimLoadingBar', () => {
 
         let componentFixture:ComponentFixture<any>;
-        let component:SlimLoadingBar;
+        let component:SlimLoadingBarComponent;
         let containerDiv:HTMLDivElement;
         let progressDiv:HTMLDivElement;
 
@@ -38,7 +38,7 @@ export function main() {
 
         // beforeEach(injectAsync([TestComponentBuilder], (tcb:TestComponentBuilder) => {
         beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
-            return tcb.createAsync(SlimLoadingBar).then((cf:ComponentFixture<any>) => {
+            return tcb.createAsync(SlimLoadingBarComponent).then((cf:ComponentFixture<any>) => {
                 componentFixture = cf;
                 let element = componentFixture.elementRef.nativeElement;
                 containerDiv = element.querySelector('.slim-loading-bar');

@@ -8,9 +8,16 @@ build.xml
 node_modules/*
 npm-debug.log
 coverage
-tests
 typings
 typings.json
+**/*.ts
+!*.d.ts
+!src/*.d.ts
+!tests/*.d.ts
+.travis.yml
+karma*
+make.js
+tsconfig.json
 
 #################
 ## JetBrains

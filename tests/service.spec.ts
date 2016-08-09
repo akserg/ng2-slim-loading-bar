@@ -12,7 +12,7 @@ import {
 
 import {Observable} from 'rxjs/Observable';
 
-import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType} from '../src/service';
+import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType} from '../src/slim-loading-bar.service';
 
 export function main() {
     describe('SlimLoadingBarService', () => {

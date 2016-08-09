@@ -1,7 +1,6 @@
 var pkg     = require('./package.json');
 var path    = require('path');
 var Builder = require('systemjs-builder');
-var name    = pkg.name;
 
 var builder = new Builder();
 var config = {
@@ -27,7 +26,7 @@ var config = {
 builder.config(config);
 
 builder
-.bundle(name, path.resolve(__dirname, 'bundles/', name + '.js'))
+.bundle('index', path.resolve(__dirname, 'bundles/', pkg.name + '.js'))
 .then(function() {
   console.log('Build complete.');
 })

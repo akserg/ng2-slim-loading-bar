@@ -3,10 +3,10 @@
 // https://github.com/akserg/ng2-slim-loading-bar
 
 import {Component, Input, OnInit} from '@angular/core';
-import {isPresent} from '@angular/common/src/facade/lang';
 import {CORE_DIRECTIVES} from '@angular/common';
 
-import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType} from './service';
+import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType} from './slim-loading-bar.service';
+import {isPresent} from './slim-loading-bar.utils';
 
 /**
  * A Slim Loading Bar component shows message loading progress bar on the top of web page or parent component.
@@ -20,7 +20,7 @@ import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType} fro
         [style.height]="height" [style.opacity]="show ? '1' : '0'"></div>
 </div>`
 })
-export class SlimLoadingBar implements OnInit {
+export class SlimLoadingBarComponent implements OnInit {
 
     private progressEl:HTMLDivElement;
 
