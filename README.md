@@ -23,7 +23,8 @@ Simple examples using ng2-slim-loading-bar:
 Online demo available [here](http://akserg.github.io/ng2-webpack-demo)
 
 ## Usage
-If you use SystemJS to load your files, you might have to update your config with this if you don't use `defaultJSExtensions: true`:
+If you use SystemJS to load your files, you might have to update your config:
+
 ```js
 System.config({
     map: {
