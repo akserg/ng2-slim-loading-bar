@@ -10,8 +10,10 @@ Angular2 component shows slim loading bar at the top of the page of your applica
 Follow me [![twitter](https://img.shields.io/twitter/follow/akopkokhyants.svg?style=social&label=%20akopkokhyants)](https://twitter.com/akopkokhyants) to be notified about new releases.
 
 ## Installation
+
 ```sh
 npm install ng2-slim-loading-bar --save
+```
 
 ## Demo
 Simple examples using ng2-slim-loading-bar:
