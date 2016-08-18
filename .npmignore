@@ -11,6 +11,7 @@ coverage
 typings
 typings.json
 **/*.ts
+**/*.js.map
 !*.d.ts
 !src/*.d.ts
 !tests/*.d.ts
