@@ -1,28 +1,18 @@
-import {
-    describe,
-    expect,
-    beforeEach,
-    it,
-    inject,
-    //injectAsync,
-    beforeEachProviders,
-    fakeAsync,
-    tick,
-    async
-} from '@angular/core/testing';
+import { inject, async, tick, TestBed, ComponentFixture }
+    from '@angular/core/testing';
 
 import {
-  TestComponentBuilder,
-  ComponentFixture
-} from '@angular/compiler/testing';
+    BrowserDynamicTestingModule, platformBrowserDynamicTesting
+} from '@angular/platform-browser-dynamic/testing';
 
-import {TEST_BROWSER_DYNAMIC_PLATFORM_PROVIDERS, TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS}
-from '@angular/platform-browser-dynamic/testing';
+import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType} 
+    from '../src/slim-loading-bar.service';
+import {SlimLoadingBarComponent} 
+    from '../src/slim-loading-bar.component';
 
-import {Observable} from 'rxjs/Observable';
-
-import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType} from '../src/slim-loading-bar.service';
-import {SlimLoadingBarComponent} from '../src/slim-loading-bar.component';
+TestBed.resetTestEnvironment();
+TestBed.initTestEnvironment(
+    BrowserDynamicTestingModule, platformBrowserDynamicTesting());
 
 export function main() {
     describe('SlimLoadingBar', () => {
@@ -32,21 +22,22 @@ export function main() {
         let containerDiv:HTMLDivElement;
         let progressDiv:HTMLDivElement;
 
-        beforeEachProviders(() => {
-            return [TEST_BROWSER_DYNAMIC_PLATFORM_PROVIDERS, TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS, TestComponentBuilder, SlimLoadingBarService];
+        beforeEach(() => {
+            TestBed.configureTestingModule({
+                declarations: [SlimLoadingBarComponent],
+                providers: [SlimLoadingBarService]
+            });
+            TestBed.compileComponents();
         });
 
-        // beforeEach(injectAsync([TestComponentBuilder], (tcb:TestComponentBuilder) => {
-        beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
-            return tcb.createAsync(SlimLoadingBarComponent).then((cf:ComponentFixture<any>) => {
-                componentFixture = cf;
-                let element = componentFixture.elementRef.nativeElement;
-                containerDiv = element.querySelector('.slim-loading-bar');
-                progressDiv = element.querySelector('.slim-loading-bar-progress');
-                component = componentFixture.componentInstance;
-                componentFixture.detectChanges();
-            });
-        })));
+        beforeEach(() => {
+            componentFixture = TestBed.createComponent(SlimLoadingBarComponent);
+            let element = componentFixture.elementRef.nativeElement;
+            containerDiv = element.querySelector('.slim-loading-bar');
+            progressDiv = element.querySelector('.slim-loading-bar-progress');
+            component = componentFixture.componentInstance;
+            componentFixture.detectChanges();
+        });
 
         it('should be defined', () => {
             expect(containerDiv).toBeDefined();

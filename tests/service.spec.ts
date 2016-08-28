@@ -1,29 +1,28 @@
-import {
-    describe,
-    expect,
-    beforeEach,
-    it,
-    inject,
-    //injectAsync,
-    beforeEachProviders,
-    fakeAsync,
-    tick
-} from '@angular/core/testing';
+import { inject, fakeAsync, tick, TestBed }
+    from '@angular/core/testing';
 
-import {Observable} from 'rxjs/Observable';
+import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } 
+    from '@angular/platform-browser-dynamic/testing';
 
-import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType} from '../src/slim-loading-bar.service';
+import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType}
+    from '../src/slim-loading-bar.service';
+
+TestBed.resetTestEnvironment();
+TestBed.initTestEnvironment(
+    BrowserDynamicTestingModule, platformBrowserDynamicTesting());
 
 export function main() {
     describe('SlimLoadingBarService', () => {
 
-        let service:SlimLoadingBarService;
+        let service: SlimLoadingBarService;
 
-        beforeEachProviders(() => {
-            return [ SlimLoadingBarService ];
+        beforeEach(() => {
+            TestBed.configureTestingModule({
+                providers: [SlimLoadingBarService]
+            });
         });
 
-        beforeEach(inject([SlimLoadingBarService], (slbs:SlimLoadingBarService) => {
+        beforeEach(inject([SlimLoadingBarService], (slbs: SlimLoadingBarService) => {
             service = slbs;
         }));
 
@@ -41,7 +40,7 @@ export function main() {
             expect(service.progress).toBe(30);
         });
 
-        it('increaments over time after calling start()', <any>fakeAsync(():void => {
+        it('increaments over time after calling start()', <any>fakeAsync((): void => {
             // var value, flag;
             expect(service.progress).toBe(0);
             service.start();

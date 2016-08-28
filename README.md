@@ -9,6 +9,8 @@ Angular2 component shows slim loading bar at the top of the page of your applica
 
 Follow me [![twitter](https://img.shields.io/twitter/follow/akopkokhyants.svg?style=social&label=%20akopkokhyants)](https://twitter.com/akopkokhyants) to be notified about new releases.
 
+_Some of these APIs and Components are not final and are subject to change!_
+
 ## Installation
 
 ```sh
