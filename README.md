@@ -43,11 +43,11 @@ Finally, you can use *ng2-slim-loading-bar* in your Angular 2 project:
 - Instantiate `SlimLoadingBarService` in the bootstrap of your application;
 - Add `SlimLoadingBarComponent` to the "directives" property of your application component;
 - Add `<ng2-slim-loading-bar></ng2-slim-loading-bar>` tag in template of your application component.
+- Inject style into your web page
 
 ```js
 import {Component} from '@angular/core';
 import {SlimLoadingBarService, SlimLoadingBarComponent} from 'ng2-slim-loading-bar';
-import {bootstrap} from '@angular/platform/browser';
 
 @Component({
     selector: 'app',
@@ -70,12 +70,10 @@ export class AppComponent {
         });
     }
 }
-
-bootstrap(AppComponent);
 ```
-
-# License
- [MIT](/LICENSE)
 
 # Credits 
 Inspired by [ngProgress.js](https://github.com/VictorBjelkholm/ngProgress)
+
+# License
+ [MIT](/LICENSE)

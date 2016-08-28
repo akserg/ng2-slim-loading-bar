@@ -17,7 +17,7 @@ TestBed.initTestEnvironment(
 export function main() {
     describe('SlimLoadingBar', () => {
 
-        let componentFixture:ComponentFixture<any>;
+        let componentFixture:ComponentFixture<SlimLoadingBarComponent>;
         let component:SlimLoadingBarComponent;
         let containerDiv:HTMLDivElement;
         let progressDiv:HTMLDivElement;
