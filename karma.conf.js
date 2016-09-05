@@ -12,9 +12,13 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            // for Travis
-            'node_modules/core-js/client/core.js',
+            // System.js for module loading
+            'node_modules/systemjs/dist/system.src.js',
 
+            // Polyfills
+            'node_modules/core-js/client/shim.js',
+
+            'node_modules/reflect-metadata/Reflect.js',
             // zone-microtask must be included first as it contains a Promise monkey patch
             'node_modules/zone.js/dist/zone.js',
             'node_modules/zone.js/dist/long-stack-trace-zone.js',
@@ -23,8 +27,6 @@ module.exports = function(config) {
             'node_modules/zone.js/dist/jasmine-patch.js',
             'node_modules/zone.js/dist/async-test.js',
             'node_modules/zone.js/dist/fake-async-test.js',
-            'node_modules/systemjs/dist/system.src.js',
-            'node_modules/reflect-metadata/Reflect.js',
 
             { pattern: 'node_modules/@angular/**/*.js', included: false, watched: false, served: true },
             { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false, served: true },

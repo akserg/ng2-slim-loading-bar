@@ -23,15 +23,15 @@ export function main() {
         let progressDiv:HTMLDivElement;
 
         beforeEach(() => {
-            TestBed.configureTestingModule({
-                declarations: [SlimLoadingBarComponent],
-                providers: [SlimLoadingBarService]
-            });
+            // TestBed.configureTestingModule({
+            //     declarations: [SlimLoadingBarComponent],
+            //     providers: [SlimLoadingBarService]
+            // });
             TestBed.compileComponents();
         });
 
         beforeEach(() => {
-            componentFixture = TestBed.createComponent(SlimLoadingBarComponent);
+            componentFixture = TestBed.createComponent<SlimLoadingBarComponent>(SlimLoadingBarComponent);
             let element = componentFixture.elementRef.nativeElement;
             containerDiv = element.querySelector('.slim-loading-bar');
             progressDiv = element.querySelector('.slim-loading-bar-progress');

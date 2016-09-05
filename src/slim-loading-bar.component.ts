@@ -3,7 +3,6 @@
 // https://github.com/akserg/ng2-slim-loading-bar
 
 import {Component, Input, OnInit} from '@angular/core';
-import {CORE_DIRECTIVES} from '@angular/common';
 
 import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType} from './slim-loading-bar.service';
 import {isPresent} from './slim-loading-bar.utils';
@@ -13,7 +12,6 @@ import {isPresent} from './slim-loading-bar.utils';
  */
 @Component({
     selector: 'ng2-slim-loading-bar',
-    directives: [CORE_DIRECTIVES],
     template: `
 <div class="slim-loading-bar">
     <div class="slim-loading-bar-progress" [style.width]="progress" [style.backgroundColor]="color" [style.color]="color"
