@@ -21,6 +21,7 @@ typings
 index.js
 index.d.ts
 index.js.map
+_test-output
 
 #################
 ## JetBrains

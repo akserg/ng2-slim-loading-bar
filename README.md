@@ -39,20 +39,29 @@ System.config({
 ```
 
 Finally, you can use *ng2-slim-loading-bar* in your Angular 2 project:
-- Import `SlimLoadingBarService, SlimLoadingBarComponent` from `ng2-slim-loading-bar`
-- Instantiate `SlimLoadingBarService` in the bootstrap of your application;
-- Add `SlimLoadingBarComponent` to the "directives" property of your application component;
+- Import and Export `SlimLoadingBarModule` from `ng2-slim-loading-bar` in your main application module
+
+```js
+import {NgModule} from '@angular/core';
+import {SlimLoadingBarModule} from 'ng2-slim-loading-bar';
+
+@NgModule({
+    imports: [SlimLoadingBarModule],
+    bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+```
+
 - Add `<ng2-slim-loading-bar></ng2-slim-loading-bar>` tag in template of your application component.
-- Inject style into your web page
+- Inject `style.css` into your web page
 
 ```js
 import {Component} from '@angular/core';
-import {SlimLoadingBarService, SlimLoadingBarComponent} from 'ng2-slim-loading-bar';
+import {SlimLoadingBarService} from 'ng2-slim-loading-bar';
 
 @Component({
     selector: 'app',
-    directives: [SlimLoadingBarComponent],
-    providers: [SlimLoadingBarService]
     template: `
         <div>Hello world</div>
         <button (click)="startLoading()">Start Loading</button>
@@ -61,7 +70,7 @@ import {SlimLoadingBarService, SlimLoadingBarComponent} from 'ng2-slim-loading-b
 })
 export class AppComponent {
     
-    constructor(private slimLoadingBarService:SlimLoadingBarService) { }
+    constructor(private slimLoadingBarService: SlimLoadingBarService) { }
     
     startLoading() {
         // We can listen when loading will be completed

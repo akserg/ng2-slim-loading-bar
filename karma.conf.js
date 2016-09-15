@@ -1,87 +1,81 @@
-// Karma configuration
+// #docregion
+module.exports = function (config) {
+  // transpiled src JS and map files
+  var appBase = 'src/';
+  // transpiled test JS and map files
+  var testBase = 'tests/';
 
-module.exports = function(config) {
-    config.set({
+  config.set({
+    basePath: './',
+    frameworks: ['jasmine'],
+    plugins: [
+      require('karma-jasmine'),
+      require('karma-chrome-launcher'),
+      require('karma-htmlfile-reporter')
+    ],
 
-        // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: './',
+    customLaunchers: {
+      // From the CLI.
+      // Chrome setup for travis CI using chromium
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
+    files: [
+      // System.js for module loading
+      'node_modules/systemjs/dist/system.src.js',
 
-        // frameworks to use
-        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['jasmine'],
+      // Polyfills
+      'node_modules/core-js/client/shim.js',
+      'node_modules/reflect-metadata/Reflect.js',
 
-        // list of files / patterns to load in the browser
-        files: [
-            // System.js for module loading
-            'node_modules/systemjs/dist/system.src.js',
+      // zone.js
+      'node_modules/zone.js/dist/zone.js',
+      'node_modules/zone.js/dist/long-stack-trace-zone.js',
+      'node_modules/zone.js/dist/proxy.js',
+      'node_modules/zone.js/dist/sync-test.js',
+      'node_modules/zone.js/dist/jasmine-patch.js',
+      'node_modules/zone.js/dist/async-test.js',
+      'node_modules/zone.js/dist/fake-async-test.js',
 
-            // Polyfills
-            'node_modules/core-js/client/shim.js',
+      // RxJs
+      { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
+      { pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false },
 
-            'node_modules/reflect-metadata/Reflect.js',
-            // zone-microtask must be included first as it contains a Promise monkey patch
-            'node_modules/zone.js/dist/zone.js',
-            'node_modules/zone.js/dist/long-stack-trace-zone.js',
-            'node_modules/zone.js/dist/proxy.js',
-            'node_modules/zone.js/dist/sync-test.js',
-            'node_modules/zone.js/dist/jasmine-patch.js',
-            'node_modules/zone.js/dist/async-test.js',
-            'node_modules/zone.js/dist/fake-async-test.js',
+      // Paths loaded via module imports:
+      // Angular itself
+      { pattern: 'node_modules/@angular/**/*.js', included: false, watched: false },
+      { pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false },
 
-            { pattern: 'node_modules/@angular/**/*.js', included: false, watched: false, served: true },
-            { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false, served: true },
-            { pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: false, watched: false, served: true }, // PhantomJS2 (and possibly others) might require it
+      { pattern: 'systemjs.config.js', included: false, watched: false },
+      { pattern: 'systemjs.config.extras.js', included: false, watched: false },
+      'karma-test-shim.js',
 
-            { pattern: 'src/**/*.ts', included: false, watched: true }, // source files
-            { pattern: 'tests/**/*.ts', included: false, watched: true }, // test files
-            'karma-test-shim.js'
-        ],
+      // transpiled application & spec code paths loaded via module imports
+      { pattern: appBase + '**/*.js', included: false, watched: true },
+      { pattern: testBase + '**/*.js', included: false, watched: true },
+    ],
 
-        // list of files to exclude
-        exclude: [
-            'node_modules/@angular/**/*_spec.js'
-        ],
+    exclude: [],
+    preprocessors: {},
+    reporters: ['progress', 'html'],
 
-        preprocessors: {
-            '**/*.ts': ['typescript']
-        },
+    // HtmlReporter configuration
+    htmlReporter: {
+      // Open this file to see results in browser
+      outputFile: '_test-output/tests.html',
 
-        typescriptPreprocessor: {
-            options: require('./tsconfig.json').compilerOptions,
-            typings: [
-                "typings/main.d.ts"
-            ]
-        },
+      // Optional
+      pageTitle: 'Unit Tests',
+      subPageTitle: __dirname
+    },
 
-        // test results reporter to use
-        // possible values: 'dots', 'progress'
-        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['progress'],
-
-
-        // web server port
-        port: 9876,
-
-        // enable / disable colors in the output (reporters and logs)
-        colors: true,
-
-        // level of logging
-        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_INFO,
-
-        // enable / disable watching file and executing tests whenever any file changes
-        autoWatch: false,
-
-        // start these browsers
-        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: [process.env.TRAVIS ? 'Firefox' : 'Chrome'],
-
-        // Continuous Integration mode
-        // if true, Karma captures browsers, runs the tests and exits
-        singleRun: true,
-
-        // Concurrency level
-        // how many browser should be started simultanous
-        concurrency: Infinity
-    })
-};
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: false,
+    browsers: ['Chrome'],
+    singleRun: true
+  })
+}

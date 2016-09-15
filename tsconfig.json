@@ -8,10 +8,5 @@
         "declaration": true,
         "moduleResolution": "node",
         "sourceMap": true
-    },
-    "exclude": [
-        "node_modules",
-        "typings/main.d.ts",
-        "typings/main"
-    ]
+    }
 }
