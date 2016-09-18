@@ -21,7 +21,13 @@ export default {
 @NgModule({
   imports: [CommonModule],
   declarations: [SlimLoadingBarComponent],
-  providers: [SlimLoadingBarService],
-  exports: [SlimLoadingBarComponent, SlimLoadingBarService]
+  exports: [CommonModule, SlimLoadingBarComponent]
 })
-export class SlimLoadingBarModule {}
+export class SlimLoadingBarModule {
+  static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: SlimLoadingBarModule,
+            providers: [SlimLoadingBarService]
+        };
+    }
+}

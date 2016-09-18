@@ -25,6 +25,7 @@ Simple examples using ng2-slim-loading-bar:
 Online demo available [here](http://akserg.github.io/ng2-webpack-demo)
 
 ## Usage
+
 If you use SystemJS to load your files, you might have to update your config:
 
 ```js
@@ -38,23 +39,47 @@ System.config({
 });
 ```
 
-Finally, you can use *ng2-slim-loading-bar* in your Angular 2 project:
-- Import and Export `SlimLoadingBarModule` from `ng2-slim-loading-bar` in your main application module
+#### 1. Update the markup
+- Import the `style.css` into your web page
+- Add `<ng2-slim-loading-bar></ng2-slim-loading-bar>` tag in template of your application component.
 
-```js
+#### 2. Import the `SlimLoadingBarModule`
+Import `SlimLoadingBarModule.forRoot()` in the NgModule of your application. 
+The `forRoot` method is a convention for modules that provide a singleton service.
+
+```ts
+import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from '@angular/core';
 import {SlimLoadingBarModule} from 'ng2-slim-loading-bar';
 
 @NgModule({
-    imports: [SlimLoadingBarModule],
+    imports: [
+        BrowserModule,
+        SlimLoadingBarModule.forRoot()
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
 }
 ```
 
-- Add `<ng2-slim-loading-bar></ng2-slim-loading-bar>` tag in template of your application component.
-- Inject `style.css` into your web page
+If you have multiple NgModules and you use one as a shared NgModule (that you import in all of your other NgModules), 
+don't forget that you can use it to export the `SlimLoadingBarModule` that you imported in order to avoid having to import it multiple times.
+
+```ts
+@NgModule({
+    imports: [
+        BrowserModule,
+        SlimLoadingBarModule.forRoot()
+    ],
+    exports: [BrowserModule, SlimLoadingBarModule],
+})
+export class SharedModule {
+}
+```
+
+#### 3. Use the `SlimLoadingBarService` for your application
+- Import `SlimLoadingBarService` from `ng2-slim-loading-bar` in your application code:
 
 ```js
 import {Component} from '@angular/core';
@@ -65,6 +90,7 @@ import {SlimLoadingBarService} from 'ng2-slim-loading-bar';
     template: `
         <div>Hello world</div>
         <button (click)="startLoading()">Start Loading</button>
+        <button (click)="stopLoading()">Stop Loading</button>
         <ng2-slim-loading-bar></ng2-slim-loading-bar>
     `
 })
@@ -73,13 +99,37 @@ export class AppComponent {
     constructor(private slimLoadingBarService: SlimLoadingBarService) { }
     
     startLoading() {
-        // We can listen when loading will be completed
         this.slimLoadingBarService.start(() => {
             console.log('Loading complete');
         });
     }
+
+    stopLoading() {
+        this.slimLoadingBarService.stop();
+    }
 }
 ```
+
+#### 3. Customize the the `ng2-slim-loading-bar` for your application
+You can use the following properties to customize the `ng2-slim-loading-bar` component in your template:
+- `color` - The color of loading bar. Default is `firebrick`. Any CSS compatible value.
+- `height` - The height of loading bar. Defaukt value is `2px`.
+- `show` - The flag helps hide and show the loading bar. Devault value is `true`
+
+Example: 
+`<ng2-slim-loading-bar [color]="blue" [height]="4px"></ng2-slim-loading-bar>`
+
+#### 4. Manage the loading bar
+You can use the following properties to customize the SlimLoadingBar via instance of SlimLoadingBarService:
+- `color` - The color of loading bar.
+- `height` - The height of loading bar.
+- `visible` - The flag helps hide and show the loading bar.
+
+You can use the following methods to control the SlimLoadingBar via instance of SlimLoadingBarService:
+- `start` - Start the loading progress. Use the callback function as an parameter to listed the complete event.
+- `stop` - Stop the loading progress. This method pause the current position of loading progress.
+- `reset`- Reset the position of loading progress to 0.
+- `complete` - Set the progress to 100% and hide the progress bar.
 
 # Credits 
 Inspired by [ngProgress.js](https://github.com/VictorBjelkholm/ngProgress)
