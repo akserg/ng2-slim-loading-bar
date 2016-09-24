@@ -6,6 +6,7 @@ Angular2 component shows slim loading bar at the top of the page of your applica
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) 
 [![Dependency Status](https://david-dm.org/akserg/ng2-slim-loading-bar.svg)](https://david-dm.org/akserg/ng2-slim-loading-bar)
 [![devDependency Status](https://david-dm.org/akserg/ng2-slim-loading-bar/dev-status.svg)](https://david-dm.org/akserg/ng2-slim-loading-bar#info=devDependencies)
+[![Known Vulnerabilities](https://snyk.io/test/github/akserg/ng2-slim-loading-bar/badge.svg)](https://snyk.io/test/github/akserg/ng2-slim-loading-bar)
 
 Follow me [![twitter](https://img.shields.io/twitter/follow/akopkokhyants.svg?style=social&label=%20akopkokhyants)](https://twitter.com/akopkokhyants) to be notified about new releases.
 
