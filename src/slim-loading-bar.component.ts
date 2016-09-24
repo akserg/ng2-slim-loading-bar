@@ -11,7 +11,7 @@ import {isPresent} from './slim-loading-bar.utils';
  * A Slim Loading Bar component shows message loading progress bar on the top of web page or parent component.
  */
 @Component({
-    moduleId: module.id,
+    moduleId: module.id.toString(),
     selector: 'ng2-slim-loading-bar',
     template: `
 <div class="slim-loading-bar">

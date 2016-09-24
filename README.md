@@ -92,6 +92,7 @@ import {SlimLoadingBarService} from 'ng2-slim-loading-bar';
         <div>Hello world</div>
         <button (click)="startLoading()">Start Loading</button>
         <button (click)="stopLoading()">Stop Loading</button>
+        <button (click)="completeLoading()">Complete Loading</button>
         <ng2-slim-loading-bar></ng2-slim-loading-bar>
     `
 })
@@ -108,17 +109,21 @@ export class AppComponent {
     stopLoading() {
         this.slimLoadingBarService.stop();
     }
+
+    completeLoading() {
+        this.slimLoadingBarService.complete();
+    }
 }
 ```
 
 #### 3. Customize the the `ng2-slim-loading-bar` for your application
 You can use the following properties to customize the `ng2-slim-loading-bar` component in your template:
 - `color` - The color of loading bar. Default is `firebrick`. Any CSS compatible value.
-- `height` - The height of loading bar. Defaukt value is `2px`.
-- `show` - The flag helps hide and show the loading bar. Devault value is `true`
+- `height` - The height of loading bar. Default value is `2px`.
+- `show` - The flag helps hide and show the loading bar. Devault value is `true`.
 
 Example: 
-`<ng2-slim-loading-bar [color]="blue" [height]="4px"></ng2-slim-loading-bar>`
+`<ng2-slim-loading-bar [color]="'blue'" [height]="'4px'"></ng2-slim-loading-bar>`
 
 #### 4. Manage the loading bar
 You can use the following properties to customize the SlimLoadingBar via instance of SlimLoadingBarService:
