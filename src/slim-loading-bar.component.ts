@@ -21,8 +21,6 @@ import {isPresent} from './slim-loading-bar.utils';
 })
 export class SlimLoadingBarComponent implements OnInit {
 
-    private progressEl:HTMLDivElement;
-
     private _progress: string = '0%';
     @Input() set progress(value: string) {
         if (isPresent(value)) {

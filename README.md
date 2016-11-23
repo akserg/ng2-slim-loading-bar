@@ -35,7 +35,7 @@ System.config({
         'ng2-slim-loading-bar': 'node_modules/ng2-slim-loading-bar'
     },
     packages: {
-        'ng2-slim-loading-bar':  { main: 'index.js',  defaultExtension: 'js' },
+        'ng2-slim-loading-bar':  { defaultExtension: 'js' },
     }
 });
 ```

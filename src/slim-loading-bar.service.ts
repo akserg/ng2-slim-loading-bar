@@ -6,7 +6,6 @@ import {Injectable} from '@angular/core';
 
 import {Observable} from 'rxjs/Observable';
 import {Subscriber} from 'rxjs/Subscriber';
-import {Subscription} from 'rxjs/Subscription';
 
 import {isPresent} from './slim-loading-bar.utils';
 
@@ -46,9 +45,9 @@ export class SlimLoadingBarService {
 
     set progress(value:number) {
         if (isPresent(value)) {
-        	if (value > 0) {
-        		this.visible = true;
-        	}
+            if (value > 0) {
+                this.visible = true;
+            }
             this._progress = value;
             this.emitEvent(new SlimLoadingBarEvent(SlimLoadingBarEventType.PROGRESS, this._progress));
         }
