@@ -1,7 +1,7 @@
 import { TestBed, ComponentFixture }
     from '@angular/core/testing';
 
-import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType} 
+import {SlimLoadingBarService} 
     from '../src/slim-loading-bar.service';
 import {SlimLoadingBarComponent} 
     from '../src/slim-loading-bar.component';

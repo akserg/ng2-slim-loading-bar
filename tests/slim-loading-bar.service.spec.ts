@@ -1,7 +1,7 @@
 import { inject, fakeAsync, tick, TestBed }
     from '@angular/core/testing';
 
-import {SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType}
+import {SlimLoadingBarService}
     from '../src/slim-loading-bar.service';
 
 describe('SlimLoadingBarService', () => {
