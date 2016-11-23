@@ -7,7 +7,7 @@
     "test-watch": "tsc && karma start --no-single-run --auto-watch",
     "commit": "npm run prepublish && npm test && git-cz",
     "prepublish": "ngc && npm run build",
-    "build": "webpack",
+    "build": "webpack && cp style.css bundles/style.css",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -32,15 +32,13 @@
   "typings": "index.d.ts",
   "homepage": "https://github.com/akserg/ng2-slim-loading-bar",
   "peerDependencies": {
-    "@angular/core": "^2.0.0",
-    "@angular/http": "^2.0.0"
+    "@angular/core": "^2.0.0"
   },
   "devDependencies": {
     "@angular/common": "2.1.2",
     "@angular/compiler": "2.1.2",
     "@angular/compiler-cli": "2.1.2",
     "@angular/core": "2.1.2",
-    "@angular/http": "2.1.2",
     "@angular/platform-browser": "2.1.2",
     "@angular/platform-browser-dynamic": "2.1.2",
     "@angular/platform-server": "2.1.2",
@@ -71,7 +69,7 @@
     "ts-helpers": "1.1.2",
     "tslint": "3.15.1",
     "tslint-loader": "2.1.5",
-    "typescript": "2.0.6",
+    "typescript": "2.0.10",
     "webpack": "2.1.0-beta.25",
     "zone.js": "0.6.26"
   },
