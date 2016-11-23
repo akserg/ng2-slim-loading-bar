@@ -50,26 +50,9 @@ module.exports = function(config) {
         autoWatch: false,
 
         browsers: [process.env.TRAVIS ? 'Firefox' : 'Chrome'],
-        
-        // browsers: [
-        //     'Chrome'
-        // ],
-
-        // customLaunchers: {
-        //     ChromeTravisCi: {
-        //         base: 'Chrome',
-        //         flags: ['--no-sandbox']
-        //     }
-        // },
 
         singleRun: true
     };
-
-    // if (process.env.TRAVIS){
-    //     configuration.browsers = [
-    //         'ChromeTravisCi'
-    //     ];
-    // }
 
     config.set(configuration);
 };
