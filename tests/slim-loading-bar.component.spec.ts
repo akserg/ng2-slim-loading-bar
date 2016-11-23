@@ -45,7 +45,6 @@ describe('SlimLoadingBar', () => {
     });
 
     it ('should change colors of progress when calling set color', () => {
-        console.log('progressDiv.style.color', progressDiv.style.color);
         expect(progressDiv.style.color).toBe('firebrick');
 
         // Set color
