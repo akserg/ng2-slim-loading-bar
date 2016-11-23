@@ -49,16 +49,18 @@ module.exports = function(config) {
 
         autoWatch: false,
 
-        browsers: [
-            'Chrome'
-        ],
+        browsers: [process.env.TRAVIS ? 'Firefox' : 'Chrome'],
+        
+        // browsers: [
+        //     'Chrome'
+        // ],
 
-        customLaunchers: {
-            ChromeTravisCi: {
-                base: 'Chrome',
-                flags: ['--no-sandbox']
-            }
-        },
+        // customLaunchers: {
+        //     ChromeTravisCi: {
+        //         base: 'Chrome',
+        //         flags: ['--no-sandbox']
+        //     }
+        // },
 
         singleRun: true
     };
