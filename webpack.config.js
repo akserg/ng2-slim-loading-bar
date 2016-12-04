@@ -13,8 +13,6 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 
 module.exports = {
-    devtool: 'inline-source-map',
-
     resolve: {
         extensions: ['.ts', '.js']
     },

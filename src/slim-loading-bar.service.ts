@@ -2,10 +2,7 @@
 // This project is licensed under the terms of the MIT license.
 // https://github.com/akserg/ng2-slim-loading-bar
 
-import {Injectable} from '@angular/core';
-
-import {Observable} from 'rxjs/Observable';
-import {Subscriber} from 'rxjs/Subscriber';
+import {Injectable, EventEmitter} from '@angular/core';
 
 import {isPresent} from './slim-loading-bar.utils';
 
@@ -19,6 +16,10 @@ export enum SlimLoadingBarEventType {
 export class SlimLoadingBarEvent {
     constructor(public type:SlimLoadingBarEventType, public value:any) {}
 }
+
+export function slimLoadingBarServiceFactory(): SlimLoadingBarService  {
+    return new SlimLoadingBarService(new EventEmitter<SlimLoadingBarEvent>());
+ }
 
 /**
  * SlimLoadingBar service helps manage Slim Loading bar on the top of screen or parent component
@@ -34,14 +35,7 @@ export class SlimLoadingBarService {
     private _intervalCounterId:any = 0;
     public interval:number = 500; // in milliseconds
 
-    public observable: Observable<SlimLoadingBarEvent>;
-    private subscriber: Subscriber<SlimLoadingBarEvent>;
-
-    constructor() {
-        this.observable = new Observable<SlimLoadingBarEvent>((subscriber:Subscriber<SlimLoadingBarEvent>) => {
-            this.subscriber = subscriber;
-        });
-    }
+    constructor(public events: EventEmitter<SlimLoadingBarEvent>) {}
 
     set progress(value:number) {
         if (isPresent(value)) {
@@ -92,9 +86,9 @@ export class SlimLoadingBarService {
     }
 
     private emitEvent(event: SlimLoadingBarEvent) {
-        if (this.subscriber) {
+        if (this.events) {
             // Push up a new event
-            this.subscriber.next(event);
+            this.events.next(event);
         }
     }
 
