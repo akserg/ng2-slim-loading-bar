@@ -1,12 +1,33 @@
 {
-    "compilerOptions": {
-        "noImplicitAny": true,
-        "module": "commonjs",
-        "target": "ES5",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "declaration": true,
-        "moduleResolution": "node",
-        "sourceMap": true
-    }
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "module": "es2015",
+    "target": "es5",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "types": [
+      "hammerjs",
+      "jasmine",
+      "node"
+    ],
+    "lib": ["es2015", "dom"]
+  },
+  "files": [
+    "index.ts",
+    "./src/slim-loading-bar.component.ts",
+    "./src/slim-loading-bar.service.ts",
+    "./src/slim-loading-bar.utils.ts",
+    "tests/slim-loading-bar.component.spec.ts",
+    "tests/slim-loading-bar.service.spec.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "bundles"
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true
+  }
 }

@@ -7,21 +7,17 @@ manifest.mf
 build.xml
 node_modules/*
 npm-debug.log
+*.js
+!config/*
+!karma.conf.js
+!webpack.config.js
+*.map
+*.d.ts
+!make.js
 coverage
-dist
-typings
+*.metadata.json
 bundles
-src/*.js
-src/*.d.ts
-src/*.js.map
-tests/*.js
-tests/*.d.ts
-tests/*.js.map
-typings
-index.js
-index.d.ts
-index.js.map
-_test-output
+.vscode
 
 #################
 ## JetBrains
@@ -29,8 +25,6 @@ _test-output
 .idea
 .project
 .settings
-.idea/*
-*.iml
 
 ############
 ## Windows

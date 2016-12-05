@@ -2,32 +2,26 @@
 // This project is licensed under the terms of the MIT license.
 // https://github.com/akserg/ng2-slim-loading-bar
 
-'use strict';
+import { NgModule, ModuleWithProviders } from "@angular/core";
 
-import {NgModule, ModuleWithProviders} from "@angular/core";
-import {CommonModule} from "@angular/common";
-
-import {SlimLoadingBarComponent} from './src/slim-loading-bar.component';
-import {SlimLoadingBarService} from './src/slim-loading-bar.service';
+import { SlimLoadingBarComponent } from './src/slim-loading-bar.component';
+import { SlimLoadingBarService, slimLoadingBarServiceFactory } from './src/slim-loading-bar.service';
 
 export * from './src/slim-loading-bar.component';
 export * from './src/slim-loading-bar.service';
 
-export default {
-  providers: [SlimLoadingBarService],
-  directives: [SlimLoadingBarComponent]
-}
+export let providers = [{ provide: SlimLoadingBarService, useFactory: slimLoadingBarServiceFactory }];
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [SlimLoadingBarComponent],
-  exports: [CommonModule, SlimLoadingBarComponent]
+    declarations: [SlimLoadingBarComponent],
+    exports: [SlimLoadingBarComponent],
+    providers: providers
 })
 export class SlimLoadingBarModule {
-  static forRoot(): ModuleWithProviders {
+    static forRoot(): ModuleWithProviders {
         return {
             ngModule: SlimLoadingBarModule,
-            providers: [SlimLoadingBarService]
+            providers: providers
         };
     }
 }
