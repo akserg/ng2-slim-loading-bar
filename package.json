@@ -63,7 +63,7 @@
     "karma-webpack": "^1.8.0",
     "loader-utils": "~0.2.16",
     "reflect-metadata": "0.1.8",
-    "rxjs": "5.0.0-beta.12",
+    "rxjs": "^5.0.0-beta.12",
     "semantic-release": "4.3.5",
     "source-map-loader": "0.1.5",
     "ts-helpers": "1.1.2",
@@ -71,7 +71,7 @@
     "tslint-loader": "2.1.5",
     "typescript": "2.0.10",
     "webpack": "2.1.0-beta.25",
-    "zone.js": "0.6.26"
+    "zone.js": "^0.6.26"
   },
   "config": {
     "commitizen": {
