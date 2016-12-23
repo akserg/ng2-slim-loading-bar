@@ -32,10 +32,7 @@ If you use SystemJS to load your files, you might have to update your config:
 ```js
 System.config({
     map: {
-        'ng2-slim-loading-bar': 'node_modules/ng2-slim-loading-bar'
-    },
-    packages: {
-        'ng2-slim-loading-bar':  { defaultExtension: 'js' },
+        'ng2-slim-loading-bar': 'node_modules/ng2-slim-loading-bar/bundles/index.umd.js'
     }
 });
 ```
