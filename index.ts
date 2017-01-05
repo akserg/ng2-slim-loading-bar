@@ -5,23 +5,21 @@
 import { NgModule, ModuleWithProviders } from "@angular/core";
 
 import { SlimLoadingBarComponent } from './src/slim-loading-bar.component';
-import { SlimLoadingBarService, slimLoadingBarServiceFactory } from './src/slim-loading-bar.service';
+import { SlimLoadingBarService } from './src/slim-loading-bar.service';
 
 export * from './src/slim-loading-bar.component';
 export * from './src/slim-loading-bar.service';
 
-export let providers = [{ provide: SlimLoadingBarService, useFactory: slimLoadingBarServiceFactory }];
-
 @NgModule({
     declarations: [SlimLoadingBarComponent],
     exports: [SlimLoadingBarComponent],
-    providers: providers
+    providers: [SlimLoadingBarService]
 })
 export class SlimLoadingBarModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: SlimLoadingBarModule,
-            providers: providers
+            providers: [SlimLoadingBarService]
         };
     }
 }

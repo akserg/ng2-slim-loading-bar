@@ -1,13 +1,13 @@
 import { inject, fakeAsync, tick, TestBed }
     from '@angular/core/testing';
 
-import {SlimLoadingBarService, slimLoadingBarServiceFactory}
+import {SlimLoadingBarService}
     from '../src/slim-loading-bar.service';
 
 describe('SlimLoadingBarService', () => {
 
     let service: SlimLoadingBarService;
-    let providers = [{ provide: SlimLoadingBarService, useFactory: slimLoadingBarServiceFactory }];
+    let providers = [SlimLoadingBarService];
 
     beforeEach(() => {
         TestBed.configureTestingModule({

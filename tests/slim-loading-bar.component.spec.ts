@@ -1,7 +1,7 @@
 import { TestBed, ComponentFixture }
     from '@angular/core/testing';
 
-import {SlimLoadingBarService, slimLoadingBarServiceFactory} 
+import {SlimLoadingBarService} 
     from '../src/slim-loading-bar.service';
 import {SlimLoadingBarComponent} 
     from '../src/slim-loading-bar.component';
@@ -12,7 +12,7 @@ describe('SlimLoadingBar', () => {
     let containerDiv:HTMLDivElement;
     let progressDiv:HTMLDivElement;
 
-    let providers = [{ provide: SlimLoadingBarService, useFactory: slimLoadingBarServiceFactory }];
+    let providers = [SlimLoadingBarService];
 
     beforeEach(() => {
         TestBed.configureTestingModule({
