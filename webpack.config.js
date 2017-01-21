@@ -34,7 +34,7 @@ module.exports = {
         rules: [{
             enforce: 'pre',
             test: /\.ts$/,
-            loader: 'tslint',
+            loader: 'tslint-loader',
             exclude: [helpers.root('node_modules')]
         }, {
             test: /\.ts$/,

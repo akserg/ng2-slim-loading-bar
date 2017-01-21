@@ -29,7 +29,7 @@ module.exports = {
         rules: [{
             enforce: 'pre',
             test: /\.ts$/,
-            loader: 'tslint',
+            loader: 'tslint-loader',
             exclude: [helpers.root('node_modules')]
         }, {
             enforce: 'pre',
@@ -77,7 +77,7 @@ module.exports = {
                  *
                  * See: https://github.com/wbuchwalter/tslint-loader
                  */
-                tslint: {
+                'tslint-loader': {
                     emitErrors: false,
                     failOnHint: false,
                     resourcePath: 'src'
