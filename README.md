@@ -120,7 +120,7 @@ You can use the following properties to customize the `ng2-slim-loading-bar` com
 - `show` - The flag helps hide and show the loading bar. Devault value is `true`.
 
 Example: 
-`<ng2-slim-loading-bar [color]="'blue'" [height]="'4px'"></ng2-slim-loading-bar>`
+`<ng2-slim-loading-bar color="blue" height="4px"></ng2-slim-loading-bar>`
 
 #### 4. Manage the loading bar
 You can use the following properties to customize the SlimLoadingBar via instance of SlimLoadingBarService:
