@@ -13,7 +13,7 @@ import { isPresent } from './slim-loading-bar.utils';
 @Component({
     selector: 'ng2-slim-loading-bar',
     template: `
-<div class="slim-loading-bar">
+<div class="slim-loading-bar" [class.fully-visible]="disableContent && show">
     <div class="slim-loading-bar-progress" [style.width]="progress + '%'" [style.backgroundColor]="color" [style.color]="color"
         [style.height]="height" [style.opacity]="show ? '1' : '0'"></div>
 </div>`
@@ -24,6 +24,7 @@ export class SlimLoadingBarComponent implements OnInit {
     @Input() color: string = 'firebrick';
     @Input() height: string = '2px';
     @Input() show: boolean = true;
+    @Input() disableContent: boolean;
 
     constructor(public service: SlimLoadingBarService) { }
 
@@ -37,6 +38,8 @@ export class SlimLoadingBarComponent implements OnInit {
                 this.height = event.value;
             } else if (event.type === SlimLoadingBarEventType.VISIBLE) {
                 this.show = event.value;
+            } else if (event.type === SlimLoadingBarEventType.DISABLECONTENT) {
+                this.disableContent = event.value;
             }
         });
     }

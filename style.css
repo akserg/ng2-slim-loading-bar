@@ -16,6 +16,11 @@
     z-index: 99999;
 }
 
+.fully-visible {
+    height: 100%;
+    cursor: wait;
+}
+
 /* Styling for the Slim Loading Progress Bar itself */
 .slim-loading-bar-progress {
     margin: 0;
