@@ -105,7 +105,7 @@ export class SlimLoadingBarService {
             this.progress++;
             // If the progress is 100% - call complete
             if (this.progress === 100) {
-                this.complete();
+                this.complete(onCompleted);
             }
         }, this.interval);
     }
@@ -122,7 +122,7 @@ export class SlimLoadingBarService {
         this.progress = 0;
     }
 
-    complete() {
+    complete(onCompleted: Function = null) {
         this.progress = 100;
         this.stop();
         setTimeout(() => {
@@ -131,6 +131,9 @@ export class SlimLoadingBarService {
             setTimeout(() => {
                 // Drop to 0
                 this.progress = 0;
+                if (onCompleted) {
+                    onCompleted();
+                }
             }, 250);
         }, 250);
     }
