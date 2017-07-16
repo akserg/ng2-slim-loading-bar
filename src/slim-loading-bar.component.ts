@@ -13,9 +13,9 @@ import { isPresent } from './slim-loading-bar.utils';
 @Component({
     selector: 'ng2-slim-loading-bar',
     template: `
-<div class="slim-loading-bar">
-    <div class="slim-loading-bar-progress" [style.width]="progress + '%'" [style.backgroundColor]="color" [style.color]="color"
-        [style.height]="height" [style.opacity]="show ? '1' : '0'"></div>
+<div class = "slim-loading-bar" >
+    <div class = "slim-loading-bar-progress" [style.width] = "progress + '%'" [style.backgroundColor] = "color" [style.color] = "color"
+        [style.height] = "height" [style.opacity] = "show ? '1' : '0'"></div>
 </div>`
 })
 export class SlimLoadingBarComponent implements OnInit {
@@ -25,7 +25,7 @@ export class SlimLoadingBarComponent implements OnInit {
     @Input() height: string = '2px';
     @Input() show: boolean = true;
 
-    constructor(public service: SlimLoadingBarService) { }
+    constructor(public service: SlimLoadingBarService) {}
 
     ngOnInit(): any {
         this.service.events.subscribe((event: SlimLoadingBarEvent) => {
