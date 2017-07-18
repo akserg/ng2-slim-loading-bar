@@ -21,8 +21,8 @@
     margin: 0;
     padding: 0;
     z-index: 99998;
-    background-color: green;
-    color: green;
+    background-color: rgba(46, 204, 113,1.0);
+    color: rgba(46, 204, 113,1.0);
     box-shadow: 0 0 10px 0; /* Inherits the font color */
     height: 2px;
     opacity: 0;
