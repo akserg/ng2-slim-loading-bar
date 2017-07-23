@@ -4,11 +4,11 @@
   "version": "0.0.0-semantically-released",
   "scripts": {
     "test": "karma start",
-    "Xtest-watch": "tsc && karma start --no-single-run --auto-watch",
-    "Xcommit": "npm run prepublish && npm test && git-cz",
-    "Xprepublish": "ngc && npm run build",
-    "Xbuild": "webpack && copy style.css bundles/style.css",
-    "Xsemantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "test-watch": "tsc && karma start --no-single-run --auto-watch",
+    "commit": "npm run prepublish && npm test && git-cz",
+    "prepublish": "ngc && npm run build",
+    "build": "webpack && cp style.css bundles/style.css",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
