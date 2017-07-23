@@ -2,7 +2,7 @@
 // This project is licensed under the terms of the MIT license.
 // https://github.com/akserg/ng2-slim-loading-bar
 
-import { Component, Input, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 
 import { SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType } from './slim-loading-bar.service';
 import { isPresent } from './slim-loading-bar.utils';
@@ -12,6 +12,7 @@ import { isPresent } from './slim-loading-bar.utils';
  */
 @Component({
     selector: 'ng2-slim-loading-bar',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
 <div class="slim-loading-bar">
     <div class="slim-loading-bar-progress" [style.width]="progress + '%'" [style.backgroundColor]="color" [style.color]="color"
@@ -25,7 +26,10 @@ export class SlimLoadingBarComponent implements OnInit {
     @Input() height: string = '2px';
     @Input() show: boolean = true;
 
-    constructor(public service: SlimLoadingBarService) { }
+    constructor(
+        public service: SlimLoadingBarService,
+        private cd: ChangeDetectorRef
+    ) {}
 
     ngOnInit(): any {
         this.service.events.subscribe((event: SlimLoadingBarEvent) => {
@@ -38,6 +42,7 @@ export class SlimLoadingBarComponent implements OnInit {
             } else if (event.type === SlimLoadingBarEventType.VISIBLE) {
                 this.show = event.value;
             }
+            this.cd.markForCheck();
         });
     }
 }
