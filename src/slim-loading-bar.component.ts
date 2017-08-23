@@ -15,15 +15,23 @@ import { isPresent } from './slim-loading-bar.utils';
     template: `
 <div class="slim-loading-bar">
     <div class="slim-loading-bar-progress" [style.width]="progress + '%'" [style.backgroundColor]="color" [style.color]="color"
-        [style.height]="height" [style.opacity]="show ? '1' : '0'"></div>
+        [style.height]="height" [style.opacity]="show ? '1' : '0'" [style.transition]="isTransition ? 'all 0.5s ease-in-out' : 'none'"></div>
 </div>`
 })
 export class SlimLoadingBarComponent implements OnInit {
 
-    @Input() progress: string = '0';
+    @Input() set progress(progress: string) {
+        this.isTransition = progress >= this._progress;
+        this._progress = progress;
+    }
+
     @Input() color: string = 'firebrick';
     @Input() height: string = '2px';
     @Input() show: boolean = true;
+
+    isTransition: boolean = true;
+
+    private _progress: string = '0';
 
     constructor(public service: SlimLoadingBarService) { }
 
@@ -39,5 +47,9 @@ export class SlimLoadingBarComponent implements OnInit {
                 this.show = event.value;
             }
         });
+    }
+
+    get progress() {
+        return this._progress;
     }
 }
