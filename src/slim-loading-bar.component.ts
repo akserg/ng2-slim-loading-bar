@@ -2,7 +2,7 @@
 // This project is licensed under the terms of the MIT license.
 // https://github.com/akserg/ng2-slim-loading-bar
 
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy, ElementRef } from '@angular/core';
 
 import { SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType } from './slim-loading-bar.service';
 import { isPresent } from './slim-loading-bar.utils';
@@ -12,22 +12,23 @@ import { isPresent } from './slim-loading-bar.utils';
  */
 @Component({
     selector: 'ng2-slim-loading-bar',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
 <div class="slim-loading-bar">
     <div class="slim-loading-bar-progress" [style.width]="progress + '%'" [style.backgroundColor]="color" [style.color]="color"
         [style.height]="height" [style.opacity]="show ? '1' : '0'"></div>
 </div>`
 })
-export class SlimLoadingBarComponent implements OnInit {
+export class SlimLoadingBarComponent implements OnInit, AfterViewInit {
 
     @Input() progress: string = '0';
     @Input() color: string = 'firebrick';
     @Input() height: string = '2px';
     @Input() show: boolean = true;
 
-    constructor(public service: SlimLoadingBarService) { }
+    constructor(public service: SlimLoadingBarService, private _elmRef: ElementRef, private _changeDetectorRef: ChangeDetectorRef) { }
 
-    ngOnInit(): any {
+    ngOnInit(): void {
         this.service.events.subscribe((event: SlimLoadingBarEvent) => {
             if (event.type === SlimLoadingBarEventType.PROGRESS && isPresent(event.value)) {
                 this.progress = event.value;
@@ -39,5 +40,12 @@ export class SlimLoadingBarComponent implements OnInit {
                 this.show = event.value;
             }
         });
+    }
+
+    ngAfterViewInit(): void {
+        this.service.events.subscribe((event: SlimLoadingBarEvent) => {
+           this._elmRef.nativeElement.visible = event.type === SlimLoadingBarEventType.VISIBLE ? event.value : true;
+           this._changeDetectorRef.detectChanges();
+       });
     }
 }

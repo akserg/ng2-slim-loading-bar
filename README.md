@@ -119,8 +119,8 @@ You can use the following properties to customize the `ng2-slim-loading-bar` com
 - `height` - The height of loading bar. Default value is `2px`.
 - `show` - The flag helps hide and show the loading bar. Default value is `true`.
 
-Example:
-`<ng2-slim-loading-bar [color]="'blue'" [height]="'4px'"></ng2-slim-loading-bar>`
+Example: 
+`<ng2-slim-loading-bar color="blue" height="4px"></ng2-slim-loading-bar>`
 
 #### 4. Manage the loading bar
 You can use the following properties to customize the SlimLoadingBar via instance of SlimLoadingBarService:
@@ -134,7 +134,22 @@ You can use the following methods to control the SlimLoadingBar via instance of 
 - `reset`- Reset the position of loading progress to 0.
 - `complete` - Set the progress to 100% and hide the progress bar.
 
-# Credits
+#### 5. Events handling
+You can hook up with our different types of events thrown.
+- `SlimLoadingBarEventType.PROGRESS`
+- `SlimLoadingBarEventType.HEIGHT`
+- `SlimLoadingBarEventType.COLOR`
+- `SlimLoadingBarEventType.VISIBLE`
+
+you can subscribe to these events types by simplying doing this
+```js
+ constructor(private _loadingBar: SlimLoadingBarService) {
+    this._loadingBar.events.subscribe((item:SlimLoadingBarEvent) => console.log(item));
+   }
+```
+where item returned is of `SlimLoadingBarEvent {type: SlimLoadingBarEventType, value: any}`
+
+# Credits 
 Inspired by [ngProgress.js](https://github.com/VictorBjelkholm/ngProgress)
 
 # License
