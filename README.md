@@ -38,7 +38,7 @@ System.config({
 ```
 
 #### 1. Update the markup
-- Import the `style.css` into your web page
+- Import the `style.css` file into your web page
 - Add `<ng2-slim-loading-bar></ng2-slim-loading-bar>` tag in template of your application component.
 
 #### 2. Import the `SlimLoadingBarModule`
@@ -115,7 +115,7 @@ export class AppComponent {
 
 #### 3. Customize the the `ng2-slim-loading-bar` for your application
 You can use the following properties to customize the `ng2-slim-loading-bar` component in your template:
-- `color` - The color of loading bar. Default is `firebrick`. Any CSS compatible value.
+- `color` - The color of loading bar. Default is `firebrick`. It can be any CSS compatible value.
 - `height` - The height of loading bar. Default value is `2px`.
 - `show` - The flag helps hide and show the loading bar. Default value is `true`.
 
@@ -126,7 +126,7 @@ Example:
 You can use the following properties to customize the SlimLoadingBar via instance of SlimLoadingBarService:
 - `color` - The color of loading bar.
 - `height` - The height of loading bar.
-- `visible` - The flag helps hide and show the loading bar.
+- `visible` - The flag helps hide and show the loading bar, false for hidden and true for visible.
 
 You can use the following methods to control the SlimLoadingBar via instance of SlimLoadingBarService:
 - `start` - Start the loading progress. Use the callback function as an parameter to listed the complete event.
