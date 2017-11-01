@@ -4,7 +4,7 @@
 
 import { Component, Input, OnInit, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy, ElementRef } from '@angular/core';
 
-import { SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType } from './slim-loading-bar.service';
+import { SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType, TransitionTimingFunction } from './slim-loading-bar.service';
 import { isPresent } from './slim-loading-bar.utils';
 
 /**
@@ -25,7 +25,7 @@ export class SlimLoadingBarComponent implements OnInit, AfterViewInit {
 
     private _progress: string = '0';
     @Input() set progress(progress: string) {
-        this.isTransition = progress >= this._progress ?  'all 0.5s ease-in-out' : 'none';
+        this.isTransition = progress >= this._progress ?  `all ${this.service.interval}ms ${this.transitionTimingFunction}` : 'none';
         this._progress = progress;
     }
 
@@ -36,6 +36,7 @@ export class SlimLoadingBarComponent implements OnInit, AfterViewInit {
     @Input() color: string = 'firebrick';
     @Input() height: string = '2px';
     @Input() show: boolean = true;
+    @Input() transitionTimingFunction: TransitionTimingFunction = 'linear';
 
     constructor(public service: SlimLoadingBarService, private _elmRef: ElementRef, private _changeDetectorRef: ChangeDetectorRef) { }
 
@@ -49,6 +50,8 @@ export class SlimLoadingBarComponent implements OnInit, AfterViewInit {
                 this.height = event.value;
             } else if (event.type === SlimLoadingBarEventType.VISIBLE) {
                 this.show = event.value;
+            } else if (event.type === SlimLoadingBarEventType.TRANSITION_TIMING_FUNCTION) {
+                this.transitionTimingFunction = event.value;
             }
         });
     }
@@ -58,5 +61,5 @@ export class SlimLoadingBarComponent implements OnInit, AfterViewInit {
            this._elmRef.nativeElement.visible = event.type === SlimLoadingBarEventType.VISIBLE ? event.value : true;
            this._changeDetectorRef.detectChanges();
        });
-    }   
+    }
 }

@@ -12,8 +12,11 @@ export enum SlimLoadingBarEventType {
     PROGRESS,
     HEIGHT,
     COLOR,
-    VISIBLE
+    VISIBLE,
+    TRANSITION_TIMING_FUNCTION
 }
+
+export type TransitionTimingFunction = 'linear' | 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | string;
 
 export class SlimLoadingBarEvent {
     constructor(public type:SlimLoadingBarEventType, public value:any) {}
@@ -25,13 +28,17 @@ export class SlimLoadingBarEvent {
 @Injectable()
 export class SlimLoadingBarService {
 
-    private _progress:number = 0;
-    private _height:string = '2px';
-    private _color:string = 'firebrick';
-    private _visible:boolean = true;
+    private _progress: number = 0;
+    private _height: string = '2px';
+    private _color: string = 'firebrick';
+    private _visible: boolean = true;
+    private _transitionTimingFunction: TransitionTimingFunction = 'linear';
 
-    private _intervalCounterId:any = 0;
-    public interval:number = 500; // in milliseconds
+    private _intervalCounterId: any = 0;
+    public interval: number = 500; // in milliseconds
+
+    private growMagnitude: number = 0;
+    public growSpeed: number = 1 / 10;
 
     private eventSource: Subject<SlimLoadingBarEvent> = new Subject<SlimLoadingBarEvent>();
     public events: Observable<SlimLoadingBarEvent> = this.eventSource.asObservable();
@@ -86,6 +93,17 @@ export class SlimLoadingBarService {
         return this._visible;
     }
 
+    set transitionTimingFunction(value: TransitionTimingFunction) {
+        if (isPresent(value)) {
+            this._transitionTimingFunction = value;
+            this.emitEvent(new SlimLoadingBarEvent(SlimLoadingBarEventType.TRANSITION_TIMING_FUNCTION, this._transitionTimingFunction));
+        }
+    }
+
+    get transitionTimingFunction(): TransitionTimingFunction {
+        return this._transitionTimingFunction;
+    }
+
     private emitEvent(event: SlimLoadingBarEvent) {
         if (this.eventSource) {
             // Push up a new event
@@ -94,20 +112,13 @@ export class SlimLoadingBarService {
     }
 
 
-    start(onCompleted:Function = null) {
+    start() {
         // Stop current timer
         this.stop();
         // Make it visible for sure
         this.visible = true;
-        // Run the timer with milliseconds iterval
-        this._intervalCounterId = setInterval(() => {
-            // Increment the progress and update view component
-            this.progress++;
-            // If the progress is 100% - call complete
-            if (this.progress === 100) {
-                this.complete(onCompleted);
-            }
-        }, this.interval);
+        // Run the timer with milliseconds interval
+        this._intervalCounterId = setInterval(this.growProgress.bind(this), this.interval);
     }
 
     stop() {
@@ -124,6 +135,7 @@ export class SlimLoadingBarService {
 
     complete(onCompleted: Function = null) {
         this.progress = 100;
+        this.growMagnitude = 0;
         this.stop();
         setTimeout(() => {
             // Hide it away
@@ -138,6 +150,20 @@ export class SlimLoadingBarService {
         }, 250);
     }
 
+    protected growProgress() {
+        this.growMagnitude += 1;
+        // for all n >= 1
+        // progress = sum ((n / (n + 1))^k ) / n , k=1 to m) * 100%
+        // let m = Infinity
+        // progress = 100%
+        // Math ....
+        this.progress += this.getIncrement(this.growMagnitude) * 100;
+    }
 
+    protected getIncrement(growMagnitude: number) {
+        const growRateInverse = 1 / this.growSpeed;
+        // (n / (n + 1))^k ) / n, where k controls how big is the increment ans ensures the infinite sum produces 1 as result
+        return ((growRateInverse / (growRateInverse + 1)) ** growMagnitude) / growRateInverse;
+    }
 }
 

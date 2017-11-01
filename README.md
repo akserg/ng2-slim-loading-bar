@@ -79,7 +79,7 @@ export class SharedModule {
 #### 3. Use the `SlimLoadingBarService` for your application
 - Import `SlimLoadingBarService` from `ng2-slim-loading-bar` in your application code:
 
-```js
+```typescript
 import {Component} from '@angular/core';
 import {SlimLoadingBarService} from 'ng2-slim-loading-bar';
 
@@ -98,9 +98,7 @@ export class AppComponent {
     constructor(private slimLoadingBarService: SlimLoadingBarService) { }
 
     startLoading() {
-        this.slimLoadingBarService.start(() => {
-            console.log('Loading complete');
-        });
+        this.slimLoadingBarService.start();
     }
 
     stopLoading() {
@@ -118,6 +116,7 @@ You can use the following properties to customize the `ng2-slim-loading-bar` com
 - `color` - The color of loading bar. Default is `firebrick`. It can be any CSS compatible value.
 - `height` - The height of loading bar. Default value is `2px`.
 - `show` - The flag helps hide and show the loading bar. Default value is `true`.
+- `transitionTimingFunction` - The transition timing function the bar will use when incrementing the progress in the bar. Default value is `'linear'`.
 
 Example: 
 `<ng2-slim-loading-bar color="blue" height="4px"></ng2-slim-loading-bar>`
@@ -127,6 +126,7 @@ You can use the following properties to customize the SlimLoadingBar via instanc
 - `color` - The color of loading bar.
 - `height` - The height of loading bar.
 - `visible` - The flag helps hide and show the loading bar, false for hidden and true for visible.
+- `growSpeed` - The speed of the progress bar when start is called. It can be any number grater than 0, but. It is 0.1 by default.
 
 You can use the following methods to control the SlimLoadingBar via instance of SlimLoadingBarService:
 - `start` - Start the loading progress. Use the callback function as an parameter to listed the complete event.
@@ -141,8 +141,8 @@ You can hook up with our different types of events thrown.
 - `SlimLoadingBarEventType.COLOR`
 - `SlimLoadingBarEventType.VISIBLE`
 
-you can subscribe to these events types by simplying doing this
-```js
+you can subscribe to these events types simply by doing this
+```typescript
  constructor(private _loadingBar: SlimLoadingBarService) {
     this._loadingBar.events.subscribe((item:SlimLoadingBarEvent) => console.log(item));
    }
