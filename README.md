@@ -141,7 +141,7 @@ You can hook up with our different types of events thrown.
 - `SlimLoadingBarEventType.COLOR`
 - `SlimLoadingBarEventType.VISIBLE`
 
-you can subscribe to these events types by simplying doing this
+you can subscribe to these events types simply by doing this
 ```typescript
  constructor(private _loadingBar: SlimLoadingBarService) {
     this._loadingBar.events.subscribe((item:SlimLoadingBarEvent) => console.log(item));

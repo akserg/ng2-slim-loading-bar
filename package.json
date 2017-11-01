@@ -36,7 +36,7 @@
     "@angular/core": "^2.4.7 || ^4.3.0"
   },
   "devDependencies": {
-    "@angular/common": "^2.4.7 || ^4.3.0",
+    "@angular/common": "^2.4.7",
     "@angular/compiler": "^2.4.7",
     "@angular/compiler-cli": "^2.4.7",
     "@angular/core": "^2.4.7",
