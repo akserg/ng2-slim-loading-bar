@@ -1,9 +1,9 @@
 import { TestBed, ComponentFixture }
     from '@angular/core/testing';
 
-import {SlimLoadingBarService} 
+import {SlimLoadingBarService}
     from '../src/slim-loading-bar.service';
-import {SlimLoadingBarComponent} 
+import {SlimLoadingBarComponent}
     from '../src/slim-loading-bar.component';
 
 describe('SlimLoadingBar', () => {
@@ -77,5 +77,12 @@ describe('SlimLoadingBar', () => {
         component.show = true;
         componentFixture.detectChanges();
         expect(progressDiv.style.opacity).toBe('1');
+    });
+
+    it ('should change the transition timing function when calling set transitionTimingFunction', () => {
+        component.progress = '30';
+        component.transitionTimingFunction = 'ease-in-out';
+        componentFixture.detectChanges();
+        expect(progressDiv.style.transition).toContain('ease-in-out');
     });
 });
