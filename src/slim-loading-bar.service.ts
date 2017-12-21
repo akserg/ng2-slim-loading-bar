@@ -12,7 +12,8 @@ export enum SlimLoadingBarEventType {
     PROGRESS,
     HEIGHT,
     COLOR,
-    VISIBLE
+    VISIBLE,
+    DISABLECONTENT
 }
 
 export class SlimLoadingBarEvent {
@@ -29,6 +30,7 @@ export class SlimLoadingBarService {
     private _height:string = '2px';
     private _color:string = 'firebrick';
     private _visible:boolean = true;
+    private _disableContent:boolean;
 
     private _intervalCounterId:any = 0;
     public interval:number = 500; // in milliseconds
@@ -85,6 +87,18 @@ export class SlimLoadingBarService {
     get visible():boolean {
         return this._visible;
     }
+
+    set disableContent(value:boolean) {
+        if (isPresent(value)) {
+            this._disableContent = value;
+            this.emitEvent(new SlimLoadingBarEvent(SlimLoadingBarEventType.DISABLECONTENT, this._disableContent));
+        }
+    }
+
+    get disableContent():boolean {
+        return this._disableContent;
+    }
+
 
     private emitEvent(event: SlimLoadingBarEvent) {
         if (this.eventSource) {

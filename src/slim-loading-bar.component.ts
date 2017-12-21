@@ -14,7 +14,7 @@ import { isPresent } from './slim-loading-bar.utils';
     selector: 'ng2-slim-loading-bar',
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
-<div class="slim-loading-bar">
+<div class="slim-loading-bar" [class.fully-visible]="disableContent && show">
     <div class="slim-loading-bar-progress" [style.width]="progress + '%'" [style.backgroundColor]="color" [style.color]="color"
         [style.height]="height" [style.opacity]="show ? '1' : '0'" [style.transition]="isTransition"></div>
 </div>`
@@ -36,6 +36,7 @@ export class SlimLoadingBarComponent implements OnInit, AfterViewInit {
     @Input() color: string = 'firebrick';
     @Input() height: string = '2px';
     @Input() show: boolean = true;
+    @Input() disableContent: boolean;
 
     constructor(public service: SlimLoadingBarService, private _elmRef: ElementRef, private _changeDetectorRef: ChangeDetectorRef) { }
 
@@ -49,6 +50,8 @@ export class SlimLoadingBarComponent implements OnInit, AfterViewInit {
                 this.height = event.value;
             } else if (event.type === SlimLoadingBarEventType.VISIBLE) {
                 this.show = event.value;
+            } else if (event.type === SlimLoadingBarEventType.DISABLECONTENT) {
+                this.disableContent = event.value;
             }
         });
     }
