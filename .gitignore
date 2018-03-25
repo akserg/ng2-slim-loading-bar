@@ -7,16 +7,11 @@ manifest.mf
 build.xml
 node_modules/*
 npm-debug.log
-*.js
 !config/*
 !karma.conf.js
 !webpack.config.js
-*.map
-*.d.ts
 !make.js
 coverage
-*.metadata.json
-bundles
 .vscode
 
 #################
@@ -42,4 +37,3 @@ Desktop.ini
 
 # Mac crap
 .DS_Store
-

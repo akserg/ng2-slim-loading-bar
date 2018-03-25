@@ -5,6 +5,7 @@ import {SlimLoadingBarService}
     from '../src/slim-loading-bar.service';
 import {SlimLoadingBarComponent} 
     from '../src/slim-loading-bar.component';
+import {ChangeDetectorRef} from '@angular/core';
 
 describe('SlimLoadingBar', () => {
     let componentFixture:ComponentFixture<SlimLoadingBarComponent>;
@@ -12,7 +13,7 @@ describe('SlimLoadingBar', () => {
     let containerDiv:HTMLDivElement;
     let progressDiv:HTMLDivElement;
 
-    let providers = [SlimLoadingBarService];
+    let providers = [SlimLoadingBarService, ChangeDetectorRef];
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -42,6 +43,7 @@ describe('SlimLoadingBar', () => {
 
         // Set progress
         component.progress = '30';
+        componentFixture.componentInstance['cd'].markForCheck();
         componentFixture.detectChanges();
         expect(progressDiv.style.width).toBe('30%');
     });
@@ -51,6 +53,7 @@ describe('SlimLoadingBar', () => {
 
         // Set color
         component.color = 'green';
+        componentFixture.componentInstance['cd'].markForCheck();
         componentFixture.detectChanges();
         expect(progressDiv.style.color).toBe('green');
         expect(progressDiv.style.backgroundColor).toBe('green');
@@ -61,6 +64,7 @@ describe('SlimLoadingBar', () => {
 
         // Set height
         component.height = '3px';
+        componentFixture.componentInstance['cd'].markForCheck();
         componentFixture.detectChanges();
         expect(progressDiv.style.height).toBe('3px');
     });
@@ -70,11 +74,13 @@ describe('SlimLoadingBar', () => {
 
         // Hide
         component.show = false;
+        componentFixture.componentInstance['cd'].markForCheck();
         componentFixture.detectChanges();
         expect(progressDiv.style.opacity).toBe('0');
 
         // Show
         component.show = true;
+        componentFixture.componentInstance['cd'].markForCheck();
         componentFixture.detectChanges();
         expect(progressDiv.style.opacity).toBe('1');
     });

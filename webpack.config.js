@@ -18,6 +18,7 @@ const ANALYZE = process.env.ANALYZE || false;
 const OPTIONAL_PLUGINS = configureOptionalPlugins();
 
 module.exports = {
+	mode: "development",
     resolve: {
         extensions: ['.ts', '.js']
     },
@@ -43,7 +44,7 @@ module.exports = {
             exclude: [helpers.root('node_modules')]
         }, {
             test: /\.ts$/,
-            loader: 'awesome-typescript-loader?declaration=false',
+            loader: 'ts-loader',
             exclude: [/\.e2e\.ts$/]
         }]
     },
