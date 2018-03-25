@@ -1,6 +1,8 @@
-{
+	{
   "compilerOptions": {
-    "noImplicitAny": true,
+    "noImplicitAny": false,
+	"noUnusedLocals": true,
+	"noUnusedParameters": true,
     "module": "es2015",
     "target": "es5",
     "emitDecoratorMetadata": true,

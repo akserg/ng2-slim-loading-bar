@@ -33,20 +33,19 @@
   "typings": "index.d.ts",
   "homepage": "https://github.com/akserg/ng2-slim-loading-bar",
   "peerDependencies": {
-    "@angular/core": "^2.4.7 || ^4.3.0"
+    "@angular/core": "^2.4.7 || ^4.3.0 || ^5.2.1"
   },
   "devDependencies": {
-    "@angular/common": "^2.4.7 || ^4.3.0",
-    "@angular/compiler": "^2.4.7",
-    "@angular/compiler-cli": "^2.4.7",
-    "@angular/core": "^2.4.7",
-    "@angular/platform-browser": "^2.4.7",
-    "@angular/platform-browser-dynamic": "^2.4.7",
-    "@angular/platform-server": "^2.4.7",
+    "@angular/common": "^2.4.7 || ^4.3.0 || ^5.2.1",
+    "@angular/compiler": "^2.4.7 || ^4.3.0 || ^5.2.1",
+    "@angular/compiler-cli": "^2.4.7 || ^4.3.0 || ^5.2.1",
+    "@angular/core": "^2.4.7 || ^4.3.0 || ^5.2.1",
+    "@angular/platform-browser": "^2.4.7 || ^4.3.0 || ^5.2.1",
+    "@angular/platform-browser-dynamic": "^2.4.7 || ^4.3.0 || ^5.2.1",
+    "@angular/platform-server": "^2.4.7 || ^4.3.0 || ^5.2.1",
     "@types/hammerjs": "^2.0.33",
     "@types/jasmine": "2.5.37",
-    "@types/node": "6.0.46",
-    "awesome-typescript-loader": "2.2.4",
+    "@types/node": "6.0.60",
     "codelyzer": "2.0.0-beta.2",
     "commitizen": "2.8.6",
     "core-js": "2.4.1",
@@ -70,10 +69,12 @@
     "ts-helpers": "1.1.2",
     "tslint": "~4.0.0",
     "tslint-loader": "3.3.0",
-    "typescript": "2.0.10",
-    "webpack": "2.2.0",
-    "webpack-bundle-analyzer": "^2.9.0",
-    "zone.js": "^0.7.6"
+	"ts-loader": "4.0.0",
+    "typescript": "2.4.2",
+    "webpack": "4.0.0",
+	"webpack-cli": "^2.0.13",
+    "webpack-bundle-analyzer": "^2.11.1",
+    "zone.js": "^0.8.5"
   },
   "config": {
     "commitizen": {
