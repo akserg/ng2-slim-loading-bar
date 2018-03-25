@@ -50,7 +50,7 @@ export class SlimLoadingBarComponent implements OnInit, AfterViewInit {
             } else if (event.type === SlimLoadingBarEventType.VISIBLE) {
                 this.show = event.value;
             }
-            this.cd.markForCheck();
+            this._changeDetectorRef.markForCheck();
         });
     }
 
