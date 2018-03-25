@@ -7,14 +7,10 @@ manifest.mf
 build.xml
 node_modules/*
 npm-debug.log
-*.metadata.json
-*.d.ts
-*.js
 !config/*
 !karma.conf.js
 !webpack.config.js
 !make.js
-!bundles/*
 coverage
 .vscode
 
