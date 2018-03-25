@@ -12,6 +12,11 @@ const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+const ANALYZE = process.env.ANALYZE || false;
+const OPTIONAL_PLUGINS = configureOptionalPlugins();
+
 module.exports = {
     resolve: {
         extensions: ['.ts', '.js']
@@ -57,6 +62,19 @@ module.exports = {
                     failOnHint: false
                 }
             }
-        })
+        }),
+
+        ...OPTIONAL_PLUGINS
     ]
 };
+
+function configureOptionalPlugins() {
+    let plugins = [];
+  
+    if (ANALYZE) {
+      // Include the BundleAnalyzerPlugin for analisys
+        plugins.push(new BundleAnalyzerPlugin());
+    }
+  
+    return plugins;
+  }

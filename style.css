@@ -21,15 +21,9 @@
     margin: 0;
     padding: 0;
     z-index: 99998;
-    background-color: green;
-    color: green;
+    background-color: rgba(46, 204, 113,1.0);
+    color: rgba(46, 204, 113,1.0);
     box-shadow: 0 0 10px 0; /* Inherits the font color */
     height: 2px;
     opacity: 0;
-
-    /* Add CSS3 styles for transition smoothing */
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
 }

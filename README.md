@@ -1,9 +1,9 @@
 # Angular 2 Slim Loading Bar [![npm version](https://img.shields.io/npm/v/ng2-slim-loading-bar.svg)](https://www.npmjs.com/package/ng2-slim-loading-bar) [![npm monthly downloads](https://img.shields.io/npm/dm/ng2-slim-loading-bar.svg?style=flat-square)](https://www.npmjs.com/package/ng2-slim-loading-bar)
 Angular2 component shows slim loading bar at the top of the page of your application.
 
-[![Build Status](https://travis-ci.org/akserg/ng2-slim-loading-bar.svg?branch=master)](https://travis-ci.org/akserg/ng2-slim-loading-bar) 
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) 
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) 
+[![Build Status](https://travis-ci.org/akserg/ng2-slim-loading-bar.svg?branch=master)](https://travis-ci.org/akserg/ng2-slim-loading-bar)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Dependency Status](https://david-dm.org/akserg/ng2-slim-loading-bar.svg)](https://david-dm.org/akserg/ng2-slim-loading-bar)
 [![devDependency Status](https://david-dm.org/akserg/ng2-slim-loading-bar/dev-status.svg)](https://david-dm.org/akserg/ng2-slim-loading-bar#info=devDependencies)
 [![Known Vulnerabilities](https://snyk.io/test/github/akserg/ng2-slim-loading-bar/badge.svg)](https://snyk.io/test/github/akserg/ng2-slim-loading-bar)
@@ -38,11 +38,11 @@ System.config({
 ```
 
 #### 1. Update the markup
-- Import the `style.css` into your web page
+- Import the `style.css` file into your web page
 - Add `<ng2-slim-loading-bar></ng2-slim-loading-bar>` tag in template of your application component.
 
 #### 2. Import the `SlimLoadingBarModule`
-Import `SlimLoadingBarModule.forRoot()` in the NgModule of your application. 
+Import `SlimLoadingBarModule.forRoot()` in the NgModule of your application.
 The `forRoot` method is a convention for modules that provide a singleton service.
 
 ```ts
@@ -61,7 +61,7 @@ export class AppModule {
 }
 ```
 
-If you have multiple NgModules and you use one as a shared NgModule (that you import in all of your other NgModules), 
+If you have multiple NgModules and you use one as a shared NgModule (that you import in all of your other NgModules),
 don't forget that you can use it to export the `SlimLoadingBarModule` that you imported in order to avoid having to import it multiple times.
 
 ```ts
@@ -94,9 +94,9 @@ import {SlimLoadingBarService} from 'ng2-slim-loading-bar';
     `
 })
 export class AppComponent {
-    
+
     constructor(private slimLoadingBarService: SlimLoadingBarService) { }
-    
+
     startLoading() {
         this.slimLoadingBarService.start(() => {
             console.log('Loading complete');
@@ -115,24 +115,39 @@ export class AppComponent {
 
 #### 3. Customize the the `ng2-slim-loading-bar` for your application
 You can use the following properties to customize the `ng2-slim-loading-bar` component in your template:
-- `color` - The color of loading bar. Default is `firebrick`. Any CSS compatible value.
+- `color` - The color of loading bar. Default is `firebrick`. It can be any CSS compatible value.
 - `height` - The height of loading bar. Default value is `2px`.
-- `show` - The flag helps hide and show the loading bar. Devault value is `true`.
+- `show` - The flag helps hide and show the loading bar. Default value is `true`.
 
 Example: 
-`<ng2-slim-loading-bar [color]="'blue'" [height]="'4px'"></ng2-slim-loading-bar>`
+`<ng2-slim-loading-bar color="blue" height="4px"></ng2-slim-loading-bar>`
 
 #### 4. Manage the loading bar
 You can use the following properties to customize the SlimLoadingBar via instance of SlimLoadingBarService:
 - `color` - The color of loading bar.
 - `height` - The height of loading bar.
-- `visible` - The flag helps hide and show the loading bar.
+- `visible` - The flag helps hide and show the loading bar, false for hidden and true for visible.
 
 You can use the following methods to control the SlimLoadingBar via instance of SlimLoadingBarService:
 - `start` - Start the loading progress. Use the callback function as an parameter to listed the complete event.
 - `stop` - Stop the loading progress. This method pause the current position of loading progress.
 - `reset`- Reset the position of loading progress to 0.
 - `complete` - Set the progress to 100% and hide the progress bar.
+
+#### 5. Events handling
+You can hook up with our different types of events thrown.
+- `SlimLoadingBarEventType.PROGRESS`
+- `SlimLoadingBarEventType.HEIGHT`
+- `SlimLoadingBarEventType.COLOR`
+- `SlimLoadingBarEventType.VISIBLE`
+
+you can subscribe to these events types by simplying doing this
+```js
+ constructor(private _loadingBar: SlimLoadingBarService) {
+    this._loadingBar.events.subscribe((item:SlimLoadingBarEvent) => console.log(item));
+   }
+```
+where item returned is of `SlimLoadingBarEvent {type: SlimLoadingBarEventType, value: any}`
 
 # Credits 
 Inspired by [ngProgress.js](https://github.com/VictorBjelkholm/ngProgress)
