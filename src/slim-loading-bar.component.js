@@ -53,14 +53,13 @@ var SlimLoadingBarComponent = (function () {
             else if (event.type === SlimLoadingBarEventType.VISIBLE) {
                 _this.show = event.value;
             }
-            _this._changeDetectorRef.markForCheck();
         });
     };
     SlimLoadingBarComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
         this.service.events.subscribe(function (event) {
             _this._elmRef.nativeElement.visible = event.type === SlimLoadingBarEventType.VISIBLE ? event.value : true;
-            _this._changeDetectorRef.detectChanges();
+            _this._changeDetectorRef.markForCheck();
         });
     };
     __decorate([

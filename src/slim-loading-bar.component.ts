@@ -50,14 +50,13 @@ export class SlimLoadingBarComponent implements OnInit, AfterViewInit {
             } else if (event.type === SlimLoadingBarEventType.VISIBLE) {
                 this.show = event.value;
             }
-            this._changeDetectorRef.markForCheck();
         });
     }
 
     ngAfterViewInit(): void {
         this.service.events.subscribe((event: SlimLoadingBarEvent) => {
            this._elmRef.nativeElement.visible = event.type === SlimLoadingBarEventType.VISIBLE ? event.value : true;
-           this._changeDetectorRef.detectChanges();
+           this._changeDetectorRef.markForCheck();
        });
 }
 }
