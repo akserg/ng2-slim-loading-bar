@@ -2,11 +2,10 @@
 // This project is licensed under the terms of the MIT license.
 // https://github.com/akserg/ng2-slim-loading-bar
 
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import {isPresent} from './slim-loading-bar.utils';
-import {Subject} from 'rxjs/Subject';
-import {Observable} from 'rxjs/Observable';
+import { isPresent } from './slim-loading-bar.utils';
+import { Subject, Observable } from 'rxjs';
 
 export enum SlimLoadingBarEventType {
     PROGRESS,
