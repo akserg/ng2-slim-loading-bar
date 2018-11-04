@@ -1,12 +1,9 @@
-// Copyright (C) 2016 Sergey Akopkokhyants
-// This project is licensed under the terms of the MIT license.
-// https://github.com/akserg/ng2-slim-loading-bar
-
-import {Injectable} from '@angular/core';
-
+import { Injectable } from '@angular/core';
 import {isPresent} from './slim-loading-bar.utils';
-import {Subject} from 'rxjs/Subject';
-import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs';
+import {Observable} from 'rxjs';
+
+
 
 export enum SlimLoadingBarEventType {
     PROGRESS,
@@ -22,8 +19,10 @@ export class SlimLoadingBarEvent {
 /**
  * SlimLoadingBar service helps manage Slim Loading bar on the top of screen or parent component
  */
-@Injectable()
-export class SlimLoadingBarService {
+@Injectable({
+  providedIn: 'root'
+})
+export class SlimLoadingBarLibService {
 
     private _progress:number = 0;
     private _height:string = '2px';

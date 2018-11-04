@@ -1,10 +1,9 @@
-// Copyright (C) 2016 Sergey Akopkokhyants
-// This project is licensed under the terms of the MIT license.
-// https://github.com/akserg/ng2-slim-loading-bar
+
+
 
 import { Component, Input, OnInit, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy, ElementRef } from '@angular/core';
 
-import { SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType } from './slim-loading-bar.service';
+import { SlimLoadingBarLibService, SlimLoadingBarEvent, SlimLoadingBarEventType } from './slim-loading-bar-lib.service';
 import { isPresent } from './slim-loading-bar.utils';
 
 /**
@@ -17,9 +16,33 @@ import { isPresent } from './slim-loading-bar.utils';
 <div class="slim-loading-bar">
     <div class="slim-loading-bar-progress" [style.width]="progress + '%'" [style.backgroundColor]="color" [style.color]="color"
         [style.height]="height" [style.opacity]="show ? '1' : '0'" [style.transition]="isTransition"></div>
-</div>`
+</div>`,
+styles:[`
+    /* Styling for the Slim Loading Progress Bar container */
+    .slim-loading-bar {
+        position: fixed;
+        margin: 0;
+        padding: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 99999;
+    }
+
+    /* Styling for the Slim Loading Progress Bar itself */
+    .slim-loading-bar-progress {
+        margin: 0;
+        padding: 0;
+        z-index: 99998;
+        background-color: rgba(46, 204, 113,1.0);
+        color: rgba(46, 204, 113,1.0);
+        box-shadow: 0 0 10px 0; /* Inherits the font color */
+        height: 2px;
+        opacity: 0;
+    }
+`]
 })
-export class SlimLoadingBarComponent implements OnInit, AfterViewInit {
+export class SlimLoadingBarLibComponent implements OnInit, AfterViewInit {
 
     isTransition: string = 'none';
 
@@ -37,7 +60,7 @@ export class SlimLoadingBarComponent implements OnInit, AfterViewInit {
     @Input() height: string = '2px';
     @Input() show: boolean = true;
 
-    constructor(public service: SlimLoadingBarService, private _elmRef: ElementRef, private _changeDetectorRef: ChangeDetectorRef) { }
+    constructor(public service: SlimLoadingBarLibService, private _elmRef: ElementRef, private _changeDetectorRef: ChangeDetectorRef) { }
 
     ngOnInit(): void {
         this.service.events.subscribe((event: SlimLoadingBarEvent) => {

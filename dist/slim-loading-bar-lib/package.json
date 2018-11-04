@@ -1,0 +1,21 @@
+{
+  "name": "slim-loading-bar-lib",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^7.0.0",
+    "@angular/core": "^7.0.0"
+  },
+  "main": "bundles/slim-loading-bar-lib.umd.js",
+  "module": "fesm5/slim-loading-bar-lib.js",
+  "es2015": "fesm2015/slim-loading-bar-lib.js",
+  "esm5": "esm5/slim-loading-bar-lib.js",
+  "esm2015": "esm2015/slim-loading-bar-lib.js",
+  "fesm5": "fesm5/slim-loading-bar-lib.js",
+  "fesm2015": "fesm2015/slim-loading-bar-lib.js",
+  "typings": "slim-loading-bar-lib.d.ts",
+  "metadata": "slim-loading-bar-lib.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}
