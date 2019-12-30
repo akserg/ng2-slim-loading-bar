@@ -2,10 +2,12 @@
 // This project is licensed under the terms of the MIT license.
 // https://github.com/akserg/ng2-slim-loading-bar
 
-import { Component, Input, OnInit, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy, ElementRef, OnDestroy } from '@angular/core';
 
 import { SlimLoadingBarService, SlimLoadingBarEvent, SlimLoadingBarEventType } from './slim-loading-bar.service';
 import { isPresent } from './slim-loading-bar.utils';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 /**
  * A Slim Loading Bar component shows message loading progress bar on the top of web page or parent component.
@@ -19,9 +21,11 @@ import { isPresent } from './slim-loading-bar.utils';
         [style.height]="height" [style.opacity]="show ? '1' : '0'" [style.transition]="isTransition"></div>
 </div>`
 })
-export class SlimLoadingBarComponent implements OnInit, AfterViewInit {
+export class SlimLoadingBarComponent implements OnInit, AfterViewInit, OnDestroy {
 
     isTransition: string = 'none';
+    
+    private unsubscribe$ = new Subject();
 
     private _progress: string = '0';
     @Input() set progress(progress: string) {
@@ -40,7 +44,7 @@ export class SlimLoadingBarComponent implements OnInit, AfterViewInit {
     constructor(public service: SlimLoadingBarService, private _elmRef: ElementRef, private _changeDetectorRef: ChangeDetectorRef) { }
 
     ngOnInit(): void {
-        this.service.events.subscribe((event: SlimLoadingBarEvent) => {
+        this.service.events.pipe(takeUntil(this.unsubscribe$)).subscribe((event: SlimLoadingBarEvent) => {
             if (event.type === SlimLoadingBarEventType.PROGRESS && isPresent(event.value)) {
                 this.progress = event.value;
             } else if (event.type === SlimLoadingBarEventType.COLOR) {
@@ -54,9 +58,14 @@ export class SlimLoadingBarComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.service.events.subscribe((event: SlimLoadingBarEvent) => {
+        this.service.events.pipe(takeUntil(this.unsubscribe$)).subscribe((event: SlimLoadingBarEvent) => {
            this._elmRef.nativeElement.visible = event.type === SlimLoadingBarEventType.VISIBLE ? event.value : true;
            this._changeDetectorRef.detectChanges();
        });
     }   
+    
+    ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
 }
